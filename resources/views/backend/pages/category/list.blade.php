@@ -3,47 +3,45 @@
 
 
 @section('content')
-<div>
+
 <h1>Category List</h1>
 
 
-<a href="{{route('category.list')}}" class="btn btn-success">Create new category</a>
+<a href="{{route('category.form')}}" class="btn btn-success">Create new category</a>
 
 
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Id</th>
+      <th scope="col">Category Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Image</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
+
+<tbody>
+
+@foreach($categories as $data)
+<tr>
+      <th scope="col">{{$data->id}}</th>
+      <td>{{$data->categoryName}}</td>
+      <td>{{$data->descriotion}}</td>
+      <td><img style="width: 100px;height:100px" src="{{url('images/categories', $data->image)}}" 
+    alt="" srcset="">  </td>
+      <!-- <td>{{$data->minimum_price}}</td>
+      <td>{{$data->description}}</td> -->
+      <td>
+        <a class="btn btn-info" href="">Edit</a>
+        <a class="btn btn-success" href="">View</a>
+        <a class="btn btn-danger" href="">Delete</a>
+      
+</tr>
+
+@endforeach
+</tbody>
 </table>
 
-
-
-</div>
-
-
-@endsection
+{{$categories->links()}}
+@endsection 

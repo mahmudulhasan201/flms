@@ -3,6 +3,10 @@
 <html lang="en" data-bs-theme="auto">
   <head><script src="/docs/5.3/assets/js/color-modes.js"></script>
 
+
+  @notifyCss
+
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -29,6 +33,9 @@
 
 
     <style>
+
+     
+
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -206,6 +213,12 @@
   </div>
 </div>
 <script src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script><script src="https://getbootstrap.com/docs/5.3/examples/dashboard/dashboard.js"></script></body>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script><script src="https://getbootstrap.com/docs/5.3/examples/dashboard/dashboard.js"></script></body>
+
+
+@include('notify::components.notify')
+@notifyJs
+
 </html>
+
