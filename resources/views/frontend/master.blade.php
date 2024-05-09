@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+@notifyCss
 <title>Soccer &mdash; Website by Colorlib</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,7 +24,7 @@
 <div class="site-mobile-menu site-navbar-target">
 <div class="site-mobile-menu-header">
 <div class="site-mobile-menu-close">
-<span class="icon-close2 js-menu-toggle"></span>
+<span class="icon-close2 js-menu-toggle"></span> 
 </div>
 </div>
 <div class="site-mobile-menu-body"></div>
@@ -47,12 +49,9 @@
 </div>
  
 
-z
-<div class="container md-6">
-<div class="pt-5">
+
+
 @yield('content')
-</div>
-</div>
 
 
 
@@ -95,6 +94,12 @@ z
   gtag('config', 'UA-23581568-13');
 </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v55bfa2fee65d44688e90c00735ed189a1713218998793" integrity="sha512-FIKRFRxgD20moAo96hkZQy/5QojZDAbyx0mQ17jEGHCJc/vi0G2HXLtofwD7Q3NmivvP9at5EVgbRqOaOQb+Rg==" data-cf-beacon='{"rayId":"87b63636ecbbf444","version":"2024.4.0","token":"cd0b4b3a733644fc843ef0b185f98241"}' crossorigin="anonymous"></script>
+
+@include('notify::components.notify')
+
+@notifyJs
 </body>
+
+
 </html>
 

@@ -37,11 +37,11 @@
       <td>{{$player->playingRole}}</td>
       <td>{{$player->battingStyle}}</td> 
       <td>{{$player->bowlingStyle}}</td>
-      <td><img style="width:100px; height: 100px" src="{{url('images/player',$player->playerImage)}}" alt=""></td>
+      <td><img width="100" src="{{url('images/player',$player->playerImage)}}" alt=""></td>
       <td>
-      <a href="" class="btn btn-primary">View</a>
-        <a href="" class="btn btn-success">Edit</a>
-        <a href="" class="btn btn-danger">Delete</a> 
+        <a href="{{route('player.edit',$player->id)}}" class="btn btn-success">Edit</a>
+      <a href="{{route('player.view',$player->id)}}" class="btn btn-primary">View</a>
+        <a href="{{route('player.delete',$player->id)}}" class="btn btn-danger">Delete</a> 
       </td>
     </tr>
   @endforeach

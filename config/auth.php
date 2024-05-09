@@ -40,7 +40,16 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'customerGuard' => [
+            'driver' => 'session',
+            'provider' => 'customerProvider',
+        ],
     ],
+
+
+
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -65,6 +74,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
+        'customerProvider' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Customer::class, 
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

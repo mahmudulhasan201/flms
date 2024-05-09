@@ -15,9 +15,18 @@
 <!-- <li><a href="blog.html" class="nav-link">Blog</a></li> -->
 <li><a href="contact.html" class="nav-link">Contact</a></li>
 
+@guest('customerGuard')
+<li><a href="{{route('registrationForm')}}" class="nav-link">Registration</a></li>
+
 <li><a href="{{route('loginForm')}}" class="nav-link">Login</a></li>
 
-<li><a href="{{route('registrationForm')}}" class="nav-link">Registration</a></li>
+@endguest
+
+@auth('customerGuard')
+
+<li><a href="{{route('customer.logout')}}" class="nav-link">Logout</a></li>
+@endauth
+
 </ul>
 </nav>
 <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white">

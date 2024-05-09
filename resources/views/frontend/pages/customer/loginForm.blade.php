@@ -8,7 +8,7 @@
 
 <div class="col-md-6" style="border:2px solid black; padding:10px; border-radius:15px;">
 
-<form action="{{route('do.login')}}" method="post">
+<form action="{{route('customer.login')}}" method="post">
     @csrf
   <div class="form-group">
     <label for="">Email address</label>
@@ -20,7 +20,7 @@
     <input name="password" type="password" class="form-control" id="" placeholder="Password">
   </div>
   
-  <button type="submit" class="btn btn-success">Submit</button>
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </div>
 

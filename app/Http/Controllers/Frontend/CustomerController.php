@@ -13,11 +13,12 @@ class CustomerController extends Controller
    }
 
    public function doRegistration(Request $request){
+      // dd($request->all());
     Customer::create([
         'name'=>$request->customer_name,
         'email'=>$request->customer_email,
         'mobile'=>$request->customer_number,
-        'password'=>$request->customer_password,
+        'password'=>bcrypt($request->customer_password),
         'status'=>$request->customer_status,
     ]);
     notify()->success("Registration Successful");
@@ -32,7 +33,26 @@ class CustomerController extends Controller
 
    public function doLogin(Request $request){
 
-      $loginInfo = ['email'=>$request->customer_email,'password'=>$request->customer_password];
+      // dd($request->all());
 
+      $loginInfo = ['email'=>$request->email_address,'password'=>$request->password];
+
+      $checkLogin = auth()->guard('customerGuard')->attempt($loginInfo);
+
+      //dd($checkLogin);
+
+      if($checkLogin){
+       
+
+         notify()->success("Login Succcessful");
+         return redirect()->route('homepage');
+      }
+
+      notify()->error("invalid email or password");
+      return redirect()->back();
+   }
+   public function customerLogout(){
+      auth()->guard('customerGuard')->logout();
+      return redirect()->route('homepage');
    }
 }
