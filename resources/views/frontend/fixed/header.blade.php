@@ -11,9 +11,9 @@
 <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
 <li class="active"><a href="{{route('homepage')}}" class="nav-link">Home</a></li>
 <li><a href="{{route('matches')}}" class="nav-link">Matches</a></li>
-<li><a href="players.html" class="nav-link">Players</a></li>
+<li><a href="#" class="nav-link">Players</a></li>
 <!-- <li><a href="blog.html" class="nav-link">Blog</a></li> -->
-<li><a href="contact.html" class="nav-link">Contact</a></li>
+<li><a href="#" class="nav-link">Contact</a></li>
 
 @guest('customerGuard')
 <li><a href="{{route('registrationForm')}}" class="nav-link">Registration</a></li>
