@@ -53,4 +53,15 @@ class TeamController extends Controller
         notify()->success('create succesful'); 
         return redirect()->route('team.form');
     }
+
+    //Edit View Delete
+    public function teamDelete($t_id){
+        // dd($s_id->all());
+        $deleteTeam= Team::find($t_id);
+        $deleteTeam->delete();
+
+
+        notify()->success("Delete Successful.");
+        return redirect()->back();
+    }
 }

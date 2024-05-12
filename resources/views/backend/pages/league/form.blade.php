@@ -4,7 +4,7 @@
 <div>
  <form action="{{route('league.form')}}" method="post" enctype="multipart/form-data"> 
     @csrf
-        
+        <h1>League Form</h1>
   <div class="mb-3">
     <label for="league_name" class="form-label">League Name</label>
     <input name="name" class="form-control" id="" placeholder="Enter league Name">

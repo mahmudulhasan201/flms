@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('team_players', function (Blueprint $table) {
             $table->id();
-            $table->integer('teamId');
-            $table->integer('playerId');
+            $table->integer('team_Id');
+            $table->integer('player_Id');
             $table->timestamps();
         });
     }

@@ -14,9 +14,8 @@ use App\Http\Controllers\Backend\TeamPlayerController;
 use App\Http\Controllers\Backend\FixtureController;
 use App\Http\Controllers\Backend\VanueController;
 use App\Http\Controllers\Backend\CategoryController;
-use App\Http\Controllers\Backend\PersonalFormController;
-use App\Http\Controllers\Backend\FlmsController;
 use App\Http\Controllers\Backend\UserController;
+use App\Models\Team;
 
 // Frontend
 Route::get('/',[WebpageController::class, 'homepage'])->name('homepage');
@@ -48,15 +47,30 @@ Route::get('/league/list',[LeagueController::class,'leagueList'])->name('league.
 Route::get('/league/form',[LeagueController::class,'leagueForm'])->name('league.form');
  Route::post('/league/form',[LeagueController::class,'submitLeagueForm']);
 
+ Route::get('/league/edit/{league_id}',[LeagueController::class,'leagueEdit'])->name('league.edit');//pending
+ Route::put('/league/update/{league_id}',[LeagueController::class,'leagueUpdate'])->name('league.update');//pending
+Route::get('/league/view/{league_id}',[LeagueController::class,'leagueView'])->name('league.view');//pending
+Route::get('/league/delete/{league_id}',[LeagueController::class,'leagueDelete'])->name('league.delete');
+
  //Season
 Route::get('/season/list',[SeasonController::class,'seasonList'])->name('season.list');
 Route::get('/season/form',[SeasonController::class,'seasonForm'])->name('season.form');
- Route::post('/season/form',[SeasonController::class,'viewSeason']);
+ Route::post('/season/form',[SeasonController::class,'viewSeason'])->name('season.form');
+
+ Route::get('/season/edit/{id}',[SeasonController::class,'seasonEdit'])->name('season.edit');//pending
+ Route::put('/season/update/{id}',[SeasonController::class,'seasonUpdate'])->name('season.update');//pending
+ Route::get('/season/view/{id}',[SeasonController::class,'seasonView'])->name('season.view');//pending
+ Route::get('/season/delete/{id}',[SeasonController::class,'seasonDelete'])->name('season.delete');
 
 //Team
 Route::get('/team/list',[TeamController::class,'teamList'])->name('team.list');
 Route::get('/team/form',[TeamController::class,'teamForm'])->name('team.form');
  Route::post('/team/form',[TeamController::class,'submitTeamForm'])->name('team.form');
+
+ Route::get('/team/edit/{id}',[TeamController::class,'teamEdit'])->name('team.edit');//pending
+ Route::put('/team/update/{id}',[TeamController::class,'teamUpdate'])->name('team.update');//pending
+ Route::get('/team/view/{id}',[TeamController::class,'teamView'])->name('team.view');//pending
+ Route::get('/team/delete/{id}',[TeamController::class,'teamDelete'])->name('team.delete');
 
  //Player
 Route::get('/player/list',[PlayerController::class,'playerList'])->name('player.list');
@@ -69,19 +83,35 @@ Route::get('/player/view/{player_id}',[PlayerController::class,'playerView'])->n
 Route::get('/player/delete/{player_id}',[PlayerController::class,'playerDelete'])->name('player.delete');
 
 //Team Player
-Route::get('/team/payer/list',[TeamPlayerController::class, 'teamPlayerList'])->name('teamPlayer.list');
-Route::get('/team/payer/form',[TeamPlayerController::class, 'teamPlayerForm'])->name('teamPlayer.form');
-Route::post('/team/payer/form',[TeamPlayerController::class, 'viewTeamPlayerForm'])->name('TeamPlayer.form');
+Route::get('/team/player/list',[TeamPlayerController::class, 'teamPlayerList'])->name('teamPlayer.list');
+Route::get('/team/player/form',[TeamPlayerController::class, 'teamPlayerForm'])->name('teamPlayer.form');
+Route::post('/team/player/form',[TeamPlayerController::class, 'viewTeamPlayerForm'])->name('TeamPlayer.form');
+
+Route::get('/team/player/delete/{id}',[TeamPlayerController::class,'teamPlayerEdit'])->name('teamPlayer.edit');//pending
+Route::put('/team/player/update/{id}',[TeamPlayerController::class,'teamPlayerUpdate'])->name('teamPlayer.update');//pending
+Route::get('/team/player/view/{id}',[TeamPlayerController::class,'teamPlayerView'])->name('teamPlayer.view');//pending
+Route::get('/team/player/delete/{id}',[TeamPlayerController::class,'teamPlayerDelete'])->name('teamPlayer.delete');
 
 //Fixture
 Route::get('/fixture/list',[FixtureController::class,'fixtureList'])->name('fixture.list');
 Route::get('/fixture/form',[FixtureController::class,'fixtureForm'])->name('fixture.form');
 Route::post('/fixture/form',[FixtureController::class,'submitFixtureForm'])->name('fixture.form');
 
+Route::get('/fixture/edit/{id}',[FixtureController::class,'fixtureEdit'])->name('fixture.edit');//pending
+Route::put('/fixture/update/{id}',[FixtureController::class,'fixtureUpdate'])->name('fixture.update');//pending
+Route::get('/fixture/view/{id}',[FixtureController::class,'fixtureView'])->name('fixture.view');//pending
+Route::get('/fixture/delete/{id}',[FixtureController::class,'fixtureDelete'])->name('fixture.delete');
+
 //Vanue
-Route::get('/Vanue/list',[VanueController::class,'vanueList'])->name('vanue.list');
-Route::get('/Vanue/form',[VanueController::class,'vanueForm'])->name('vanue.form');
-Route::post('/Vanue/form',[VanueController::class,'submitVanueForm'])->name('vanue.form');
+Route::get('/Venue/list',[VanueController::class,'venueList'])->name('venue.list');
+Route::get('/Venue/form',[VanueController::class,'venueForm'])->name('venue.form');
+Route::post('/Venue/form',[VanueController::class,'submitVenueForm'])->name('venue.form');
+
+Route::get('/venue/edit/{venue_id}',[VanueController::class,'venueEdit'])->name('venue.edit');//pending
+Route::get('/venue/update/{venue_id}',[VanueController::class,'venueUpdate'])->name('venue.update');//pending
+Route::get('/venue/view/{venue_id}',[VanueController::class,'venueView'])->name('venue.view');//pending
+Route::get('/venue/delete/{venue_id}',[VanueController::class,'venueDelete'])->name('venue.delete');
+
 
 //Category
 Route::get('/category/list',[CategoryController::class,'list'])->name('category.list');

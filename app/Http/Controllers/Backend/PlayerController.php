@@ -19,8 +19,9 @@ class PlayerController extends Controller
         return view('backend.pages.player.playerForm');
     }
 
-    public function viewPlayerForm(Request $request){
+    public function viewPlayerForm(Request $request){ 
 
+        //Validation
         $checkValidation=Validator::make($request->all(),[
             'player_name'=>'required',
             'born'=>'required',
@@ -36,15 +37,14 @@ class PlayerController extends Controller
             return redirect()->back();
         }
 
+        //File Handling
         $playerPhotoPart='';
         if($request->hasFile('photo')){
             $playerPhotoPart=date('YmdHis').'.'.$request->file('photo')->getClientOriginalExtension();
             $request->file('photo')->storeAs('/player',$playerPhotoPart);
         }
 
-
-
-
+        //Store Data
         Player::create([
             'fullName'=>$request->player_name, 
             'born'=>$request->born,
@@ -91,8 +91,6 @@ class PlayerController extends Controller
             File::delete('images/player/' . $player->playerImage);
             $request->file('photo')->storeAs('/player',$playerPhotoPart);
         }
-
-
         $player->update([
             'fullName'=>$request->player_name, 
             'born'=>$request->born,
@@ -114,15 +112,12 @@ class PlayerController extends Controller
     }
 
 
-
-    public function playerDelete($p_id)
-    {
+    public function playerDelete($p_id){
         $player=Player::find($p_id);
         $player->delete();
 
-        notify()->success('player deleted successfully');
+        notify()->success('player deleted successfully'); 
         return redirect()->back();
-
     }
 }
   

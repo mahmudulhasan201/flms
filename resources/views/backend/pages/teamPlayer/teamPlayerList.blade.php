@@ -13,8 +13,8 @@
   <thead>
     <tr>
       <th scope="col">ID</th> 
-      <th scope="col">Team Id</th>
-      <th scope="col">Player Id</th>
+      <th scope="col">Team Name</th>
+      <th scope="col">Player Name</th>  
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -24,12 +24,13 @@
 
     <tr>
       <th>{{$data->id}}</th> 
-      <td>{{$data->teamId}}</td> 
-      <td>{{$data->playerId}}</td> 
+      <td>{{$data->team->teamName}}</td> 
+     
+      <td>{{$data->player->fullName}}</td> 
       <td>
       <a href="" class="btn btn-primary">View</a>
         <a href="" class="btn btn-success">Edit</a>
-        <a href="" class="btn btn-danger">Delete</a> 
+        <a href="{{route('teamPlayer.delete',$data->id)}}" class="btn btn-danger">Delete</a> 
       </td>
     </tr>
     @endforeach

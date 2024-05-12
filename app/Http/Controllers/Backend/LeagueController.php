@@ -44,7 +44,15 @@ class LeagueController extends Controller
             'status'=>$request->status,
         ]);
         notify()->success('create successful');
-        return redirect()->route('league.form');
-       
+        return redirect()->route('league.form');  
+    }
+
+    //Edit View Delete
+    public function leagueDelete($l_id){
+        $deleteLeague=League::find($l_id);
+        $deleteLeague->delete();
+
+        notify()->success("Delete Successful.");
+        return redirect()->back();
     }
 }

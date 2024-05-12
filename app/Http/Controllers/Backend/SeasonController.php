@@ -39,4 +39,15 @@ class SeasonController extends Controller
         notify()->success('create succesful');
         return redirect()->route('season.form');
     }
+
+    //Edit View Delete
+    public function seasonDelete($s_id){
+        // dd($s_id->all());
+        $deleteSeason= Season::find($s_id);
+        $deleteSeason->delete();
+
+
+        notify()->success("Delete Successful.");
+        return redirect()->back();
+    }
 }

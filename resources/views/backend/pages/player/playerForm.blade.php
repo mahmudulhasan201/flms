@@ -22,7 +22,7 @@
 
   <div class="mb-3">
     <label for="Height" class="form-label">Height (m)</label>
-    <input  name="height" class="form-control" id="" placeholder="">
+    <input type="number" name="height" class="form-control" id="" placeholder="">
   </div> 
 
   <div class="mb-3">

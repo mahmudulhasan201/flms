@@ -2,22 +2,22 @@
 @section('content')
 
 <div>
- <form action="{{route('vanue.form')}}" method="post" enctype="multipart/form-data"> 
+ <form action="{{route('venue.form')}}" method="post" enctype="multipart/form-data"> 
     @csrf
-  <h1>VANUE</h1>       
+  <h1>VENUE</h1>       
   <div class="mb-3">
-    <label for="vanue_name" class="form-label">Vanue Name</label>
-    <input type="text" name="vanue_name" class="form-control" id="" placeholder="Enter Vanue Name">
+    <label for="venue_name" class="form-label">Venue Name</label>
+    <input type="text" name="venue_name" class="form-control" id="" placeholder="Enter Venue Name">
   </div>
 
   <div class="mb-3">
-    <label for="vanue_location" class="form-label">Vanue Location</label>
-    <input type="text" name="vanue_location" class="form-control" id="" placeholder="Enter Vanue Location">
+    <label for="vanue_location" class="form-label">Venue Location</label>
+    <input type="text" name="venue_location" class="form-control" id="" placeholder="Enter Venue Location">
   </div>
 
 
 
-  <button type="submit" class="btn btn-primary">Submit</button> 
+  <button type="submit" class="btn btn-primary">Submit</button>  
  </form>
 </div>
  

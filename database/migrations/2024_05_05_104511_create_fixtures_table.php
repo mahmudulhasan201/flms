@@ -10,11 +10,12 @@ return new class extends Migration
     {
         Schema::create('fixtures', function (Blueprint $table) {
             $table->id();
+            $table->string('leagueId');
             $table->string('homeTeamId');
             $table->string('awayTeamId');
             $table->string('session');
             $table->date('date');
-            $table->string('vanueId');
+            $table->string('venue_id');
             $table->timestamps();  
         }); 
     }

@@ -9,7 +9,7 @@
 <br><br>
 
 <div>
-<table class="table table-striped table-dark">
+<table class="table table-bordered">
   <thead>
     <tr>
       <th scope="col">ID</th>
@@ -29,13 +29,12 @@
       <td>{{$league->status}}</td>
       <td>
         <a href="" class="btn btn-primary">View</a>
-        <a href="" class="btn btn-success">Edit</a> 
-        <a href="" class="btn btn-danger">Delete</a> 
+        <a href="" class="btn btn-success">Edit</a>
+        <a href="{{route('league.delete',$league->id)}}" class="btn btn-danger">Delete</a>
     <td>
     </tr>
     
 @endforeach     
-
   </tbody>
 </table></div>
 

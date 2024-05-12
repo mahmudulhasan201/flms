@@ -37,7 +37,7 @@
     <td>
         <a href="" class="btn btn-primary">View</a>
         <a href="" class="btn btn-success">Edit</a>
-        <a href="" class="btn btn-danger">Delete</a>
+        <a href="{{route('team.delete',$team->id)}}" class="btn btn-danger">Delete</a>
      </td>
 
     </tr>
