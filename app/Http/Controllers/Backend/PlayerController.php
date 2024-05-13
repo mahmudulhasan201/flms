@@ -82,7 +82,7 @@ class PlayerController extends Controller
         ]);
         if($checkValidation->fails()){
             notify()->error($checkValidation->getMessageBag());
-            return redirect()->back();
+            return redirect()->back(); 
         }
 
         $playerPhotoPart='';
@@ -108,7 +108,7 @@ class PlayerController extends Controller
 
     public function playerView($player_id){
         $player=Player::find($player_id);
-        return view('backend.pages.player.playerView',compact('player'));
+        return view('backend.pages.player.playerView',compact('player')); 
     }
 
 
@@ -120,4 +120,3 @@ class PlayerController extends Controller
         return redirect()->back();
     }
 }
-  

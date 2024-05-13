@@ -4,7 +4,7 @@
 <div>
 <form action="{{route('player.form')}}" method="post" enctype="multipart/form-data">
     @csrf
-       
+       <h1>Player Form</h1>
   <div class="mb-3">
     <label for="Player Name" class="form-label">Player Name</label>
     <input type="text" name="player_name" class="form-control" id="" placeholder="Enter Player Name">

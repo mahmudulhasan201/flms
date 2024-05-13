@@ -3,6 +3,8 @@
 <div>
 <form action="{{route('season.form')}}" method="post" enctype="multipart/form-data">
     @csrf
+
+    <h1>Season Form</h1>
        
   <div class="mb-3">
     <label for="description" class="form-label">Season Name</label>

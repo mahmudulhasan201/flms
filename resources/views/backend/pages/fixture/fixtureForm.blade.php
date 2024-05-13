@@ -5,11 +5,9 @@
  <form action="{{route('fixture.form')}}" method="post" enctype="multipart/form-data"> 
     @csrf
 
-    
+    <h1>Fixture Form</h1>
 
  <div class="container">
- <h1>Create Fixture</h1> <br>
- 
 <div class="form-group">
   <label for="">League</label>
   <select class="form-control" name="league_id" >

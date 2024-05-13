@@ -21,15 +21,15 @@
   </thead>
 
   <tbody>
-@foreach($data as $league)
+@foreach($data as $league) 
     <tr>
       <td>{{$league->id}}</td>
       <td>{{$league->leagueName}}</td>
       <td><img style="width: 75px; height: 75px " src="{{url('images/league',$league->leagueLogo)}}"  alt=""></td>
       <td>{{$league->status}}</td>
       <td>
-        <a href="" class="btn btn-primary">View</a>
-        <a href="" class="btn btn-success">Edit</a>
+        <a href="{{route('league.view', $league->id)}}" class="btn btn-primary">View</a>
+        <a href="{{route('league.edit', $league->id)}}" class="btn btn-success">Edit</a>
         <a href="{{route('league.delete',$league->id)}}" class="btn btn-danger">Delete</a>
     <td>
     </tr>

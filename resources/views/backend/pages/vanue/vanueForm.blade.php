@@ -4,7 +4,7 @@
 <div>
  <form action="{{route('venue.form')}}" method="post" enctype="multipart/form-data"> 
     @csrf
-  <h1>VENUE</h1>       
+  <h1>VENUE Form</h1>       
   <div class="mb-3">
     <label for="venue_name" class="form-label">Venue Name</label>
     <input type="text" name="venue_name" class="form-control" id="" placeholder="Enter Venue Name">

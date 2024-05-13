@@ -15,7 +15,4 @@
 <p>Image:</p> <img width="100" src="{{url('/images/player', $player->playerImage)}}" alt="">
 
 
-
-
-
-@endsection
+@endsection 

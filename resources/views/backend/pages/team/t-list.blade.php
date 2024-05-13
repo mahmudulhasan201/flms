@@ -16,7 +16,6 @@
       <th scope="col">Coach Name</th>
       <th scope="col">Owner Name</th>
       <th scope="col">Owner Email</th>
-      <th scope="col">Password</th>
       <th scope="col">Status</th>
       <th scope="col">Action</th>
     </tr>
@@ -32,11 +31,10 @@
       <td>{{$team->coachName}}</td>
       <td>{{$team->ownerName}}</td>
       <td>{{$team->ownerEmail}}</td>
-      <td>{{$team->password}}</td>
-      <td>{{$team->status}}</td>
+      <td>{{$team->status}}</td>  
     <td>
-        <a href="" class="btn btn-primary">View</a>
-        <a href="" class="btn btn-success">Edit</a>
+        <a href="{{route('team.view',$team->id)}}" class="btn btn-primary">View</a>
+        <a href="{{route('team.edit',$team->id)}}" class="btn btn-success">Edit</a>
         <a href="{{route('team.delete',$team->id)}}" class="btn btn-danger">Delete</a>
      </td>
 

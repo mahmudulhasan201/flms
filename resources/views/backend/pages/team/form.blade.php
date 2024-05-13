@@ -1,6 +1,8 @@
 <div>
     @extends('backend.master')
     @section('content')
+
+    <h1>Team Form</h1>
 <div>
 <form action="{{route('team.form')}}" method="post" enctype="multipart/form-data"> <!-- enctype image er jonno use -->
     @csrf

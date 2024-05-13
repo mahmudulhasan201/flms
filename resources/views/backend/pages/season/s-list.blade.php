@@ -23,12 +23,12 @@
     @foreach($data as $season)
 
     <tr>
-      <th>{{$season->id}}</th>
+      <th>{{$season->id}}</th> 
       <td>{{$season->seasonName}}</td> 
       <td>{{$season->status}}</td> 
       <td>
-      <a href="" class="btn btn-primary">View</a>
-        <a href="" class="btn btn-success">Edit</a>
+        <a href="{{route('season.view', $season->id)}}" class="btn btn-primary">View</a>
+        <a href="{{route('season.edit',$season->id)}}" class="btn btn-success">Edit</a>
         <a href="{{route('season.delete',$season->id)}}" class="btn btn-danger">Delete</a> 
       </td> 
     </tr>

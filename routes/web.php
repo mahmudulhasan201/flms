@@ -47,9 +47,9 @@ Route::get('/league/list',[LeagueController::class,'leagueList'])->name('league.
 Route::get('/league/form',[LeagueController::class,'leagueForm'])->name('league.form');
  Route::post('/league/form',[LeagueController::class,'submitLeagueForm']);
 
- Route::get('/league/edit/{league_id}',[LeagueController::class,'leagueEdit'])->name('league.edit');//pending
- Route::put('/league/update/{league_id}',[LeagueController::class,'leagueUpdate'])->name('league.update');//pending
-Route::get('/league/view/{league_id}',[LeagueController::class,'leagueView'])->name('league.view');//pending
+ Route::get('/league/edit/{league_id}',[LeagueController::class,'leagueEdit'])->name('league.edit');
+ Route::put('/league/update/{league_id}',[LeagueController::class,'leagueUpdate'])->name('league.update');
+Route::get('/league/view/{league_id}',[LeagueController::class,'leagueView'])->name('league.view');
 Route::get('/league/delete/{league_id}',[LeagueController::class,'leagueDelete'])->name('league.delete');
 
  //Season
@@ -57,9 +57,9 @@ Route::get('/season/list',[SeasonController::class,'seasonList'])->name('season.
 Route::get('/season/form',[SeasonController::class,'seasonForm'])->name('season.form');
  Route::post('/season/form',[SeasonController::class,'viewSeason'])->name('season.form');
 
- Route::get('/season/edit/{id}',[SeasonController::class,'seasonEdit'])->name('season.edit');//pending
- Route::put('/season/update/{id}',[SeasonController::class,'seasonUpdate'])->name('season.update');//pending
- Route::get('/season/view/{id}',[SeasonController::class,'seasonView'])->name('season.view');//pending
+ Route::get('/season/edit/{id}',[SeasonController::class,'seasonEdit'])->name('season.edit');
+ Route::put('/season/update/{id}',[SeasonController::class,'seasonUpdate'])->name('season.update');
+ Route::get('/season/view/{id}',[SeasonController::class,'seasonView'])->name('season.view');
  Route::get('/season/delete/{id}',[SeasonController::class,'seasonDelete'])->name('season.delete');
 
 //Team
@@ -67,9 +67,9 @@ Route::get('/team/list',[TeamController::class,'teamList'])->name('team.list');
 Route::get('/team/form',[TeamController::class,'teamForm'])->name('team.form');
  Route::post('/team/form',[TeamController::class,'submitTeamForm'])->name('team.form');
 
- Route::get('/team/edit/{id}',[TeamController::class,'teamEdit'])->name('team.edit');//pending
- Route::put('/team/update/{id}',[TeamController::class,'teamUpdate'])->name('team.update');//pending
- Route::get('/team/view/{id}',[TeamController::class,'teamView'])->name('team.view');//pending
+ Route::get('/team/edit/{id}',[TeamController::class,'teamEdit'])->name('team.edit');
+ Route::put('/team/update/{id}',[TeamController::class,'teamUpdate'])->name('team.update');
+ Route::get('/team/view/{id}',[TeamController::class,'teamView'])->name('team.view');
  Route::get('/team/delete/{id}',[TeamController::class,'teamDelete'])->name('team.delete');
 
  //Player
@@ -87,9 +87,9 @@ Route::get('/team/player/list',[TeamPlayerController::class, 'teamPlayerList'])-
 Route::get('/team/player/form',[TeamPlayerController::class, 'teamPlayerForm'])->name('teamPlayer.form');
 Route::post('/team/player/form',[TeamPlayerController::class, 'viewTeamPlayerForm'])->name('TeamPlayer.form');
 
-Route::get('/team/player/delete/{id}',[TeamPlayerController::class,'teamPlayerEdit'])->name('teamPlayer.edit');//pending
-Route::put('/team/player/update/{id}',[TeamPlayerController::class,'teamPlayerUpdate'])->name('teamPlayer.update');//pending
-Route::get('/team/player/view/{id}',[TeamPlayerController::class,'teamPlayerView'])->name('teamPlayer.view');//pending
+Route::get('/team/player/edit/{id}',[TeamPlayerController::class,'teamPlayerEdit'])->name('teamPlayer.edit');
+Route::put('/team/player/update/{id}',[TeamPlayerController::class,'teamPlayerUpdate'])->name('teamPlayer.update');
+Route::get('/team/player/view/{id}',[TeamPlayerController::class,'teamPlayerView'])->name('teamPlayer.view');
 Route::get('/team/player/delete/{id}',[TeamPlayerController::class,'teamPlayerDelete'])->name('teamPlayer.delete');
 
 //Fixture
