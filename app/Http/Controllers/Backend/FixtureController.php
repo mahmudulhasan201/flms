@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Fixture;
 use App\Models\League;
 use App\Models\Venue;
-use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -53,6 +52,49 @@ class FixtureController extends Controller
      return redirect()->back();
    }
 
+      //Edit
+      public function fixtureEdit($edit_id){
+        $league=League::all();
+        $venue=Venue::all();
+        $editFixture = Fixture::find($edit_id);
+        return view('backend.pages.fixture.fixtureEdit',compact('editFixture','league','venue'));
+      }
+
+      public function fixtureUpdate(Request $request,$update_id){
+        $updateFixture = Fixture::find($update_id);
+
+        $checkValidation=Validator::make($request->all(),[
+          'league_id'=>'required',
+         'home_team_id'=>'required',
+          'awaay_team_id'=>'required',
+          'session'=>'required',
+          'date'=>'required',
+          'venue_id'=>'required',
+        ]);
+        if($checkValidation->fails()){
+          notify()->error($checkValidation->getMessageBag());
+          return redirect()->back();
+        }
+      $updateFixture->update([
+          'leagueId'=>$request->league_id,
+          'homeTeamId'=>$request->home_team_id,
+          'awayTeamId'=>$request->awaay_team_id,
+          'session'=>$request->session,
+          'date'=>$request->date,
+          'venue_id'=>$request->venue_id,
+         ]); 
+         notify()->success('Create Successful'); 
+         return redirect()->route('fixture.list');
+      }
+
+   //View
+   public function fixtureView($view_id){
+    $viewFixture = Fixture::find($view_id);
+    return view('backend.pages.fixture.fixtureView',compact('viewFixture'));
+   }
+
+
+//Delete
    public function fixtureDelete ($f_id){
     $deleteFixture=Fixture::find($f_id);
     

@@ -107,9 +107,9 @@ Route::get('/Venue/list',[VanueController::class,'venueList'])->name('venue.list
 Route::get('/Venue/form',[VanueController::class,'venueForm'])->name('venue.form');
 Route::post('/Venue/form',[VanueController::class,'submitVenueForm'])->name('venue.form');
 
-Route::get('/venue/edit/{venue_id}',[VanueController::class,'venueEdit'])->name('venue.edit');//pending
-Route::get('/venue/update/{venue_id}',[VanueController::class,'venueUpdate'])->name('venue.update');//pending
-Route::get('/venue/view/{venue_id}',[VanueController::class,'venueView'])->name('venue.view');//pending
+Route::get('/venue/edit/{venue_id}',[VanueController::class,'venueEdit'])->name('venue.edit');
+Route::put('/venue/update/{venue_id}',[VanueController::class,'venueUpdate'])->name('venue.update');
+Route::get('/venue/view/{venue_id}',[VanueController::class,'venueView'])->name('venue.view');
 Route::get('/venue/delete/{venue_id}',[VanueController::class,'venueDelete'])->name('venue.delete');
 
 

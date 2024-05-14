@@ -33,8 +33,8 @@
       <td>{{$data->date}}</td>
       <td>{{$data->venue->venueName}}</td>
       <td>
-        <a href="" class="btn btn-primary">View</a>
-        <a href="" class="btn btn-success">Edit</a>
+        <a href="{{route('fixture.view',$data->id)}}" class="btn btn-primary">View</a>
+        <a href="{{route('fixture.edit',$data->id)}}" class="btn btn-success">Edit</a>
         <a href="{{route('fixture.delete',$data->id)}}" class="btn btn-danger">Delete</a>
       </td>
     </tr>

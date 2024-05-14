@@ -23,8 +23,8 @@
       <td>{{$data->venueName}}</td>
       <td>{{$data->venueLocation}}</td> 
       <td>
-        <a href="" class="btn btn-primary">View</a>
-        <a href="" class="btn btn-success">Edit</a> 
+        <a href="{{route('venue.view',$data->id)}}" class="btn btn-primary">View</a>
+        <a href="{{route('venue.edit',$data->id)}}" class="btn btn-success">Edit</a> 
         <a href="{{route('venue.delete',$data->id)}}" class="btn btn-danger">Delete</a> 
     <td>
     </tr>

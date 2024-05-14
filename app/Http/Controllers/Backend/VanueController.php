@@ -41,7 +41,42 @@ class VanueController extends Controller
         return redirect()->back(); 
        }
 
-       //Edit View Delete
+       //Edit 
+       public function venueEdit($edit_id){
+        $editVenue = Venue::find($edit_id);
+        return view('backend.pages.vanue.venueEdit',compact('editVenue'));
+       }
+
+       public function venueUpdate(Request $request,$update_id){
+        $updateVenue= Venue::find($update_id);
+
+        $cheeckValidation=Validator::make($request->all(),[
+            'venue_name'=>'required',
+            'venue_location'=>'required',
+        ]);
+
+        if($cheeckValidation->fails()){ 
+            notify()->error($cheeckValidation->getMessageBag());
+            return redirect()->back();
+        }
+
+        $updateVenue->update([
+            'venueName'=>$request->venue_name,
+            'venueLocation'=>$request->venue_location,
+        ]);
+        notify()->success('Create Successful');
+        return redirect()->route('venue.list');
+       }
+       
+       
+       
+       //View
+       public function venueView($view_id){
+        $viewVenue= Venue::find($view_id);
+        return view('backend.pages.vanue.venueView',compact('viewVenue'));
+       }
+
+       //Delete
        public function venueDelete($v_id){
         $deleteVenue= Venue::find($v_id);
         $deleteVenue->delete();
