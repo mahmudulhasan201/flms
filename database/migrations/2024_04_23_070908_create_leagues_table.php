@@ -15,6 +15,10 @@ return new class extends Migration
         Schema::create('leagues', function (Blueprint $table) {
             $table->id();
             $table->string('leagueName');
+            $table->date('starting_date');
+            $table->date('ending_date');
+            $table->integer('numberOfTeams');
+            $table->string('season_id');
             $table->string('leagueLogo')->nullable();
             $table->string('status');
             $table->timestamps();

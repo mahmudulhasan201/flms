@@ -9,7 +9,32 @@
         <h1> Edit League Form</h1>
   <div class="mb-3">
     <label for="league_name" class="form-label">League Name</label> 
-    <input value="{{$editLeague->leagueName}}" type="text" name="name" class="form-control" id="" placeholder="Enter league Name">
+    <input value="{{$editLeague->leagueName}}" type="text" name="name" class="form-control" id="" placeholder="">
+  </div>
+
+  <div class="form-group">
+  <label for="">Season</label>
+  <select class="form-control" name="season_id" >
+    <option value="">{{$editLeague->season->seasonName}}</option>
+    @foreach($season as $data)
+    <option value="{{$data->id}}">{{$data->seasonName}}</option>
+    @endforeach
+  </select>
+</div>
+
+  <div class="mb-3">
+    <label for="start_date" class="form-label">Starting Date</label> 
+    <input value="{{$editLeague->starting_date}}" type="date" name="start_date" class="form-control" id="" placeholder="">
+  </div>
+
+  <div class="mb-3">
+    <label for="end_date" class="form-label">Ending Date</label> 
+    <input value="{{$editLeague->ending_date}}" type="date" name="end_date" class="form-control" id="" placeholder="">
+  </div>
+
+  <div class="mb-3">
+    <label for="number_of_teams" class="form-label">Number Of Teams</label> 
+    <input value="{{$editLeague->numberOfTeams}}" type="number" name="number_of_teams" class="form-control" id="" placeholder="">
   </div>
 
   <div class="mb-3">

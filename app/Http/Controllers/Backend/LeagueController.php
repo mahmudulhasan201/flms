@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\League;
-
+use App\Models\Season;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
@@ -18,13 +18,18 @@ class LeagueController extends Controller
  
     public function leagueForm()
     {
-        return view('backend.pages.league.form');
+        $season = Season::all();
+        return view('backend.pages.league.form',compact('season'));
     }
 
     public function submitLeagueForm(Request $request)
     {   
         $checkValidation=Validator::make($request->all(),[
             'name'=>'required',
+            'start_date'=>'required',
+            'end_date'=>'required',
+            'number_of_teams'=>'required',
+            'season_id'=>'required',
             'league_logo'=>'image',
             'status'=>'required',
         ]); 
@@ -42,6 +47,10 @@ class LeagueController extends Controller
 
         League::create([
             'leagueName'=>$request->name,
+            'starting_date'=>$request->start_date,
+            'ending_date'=>$request->end_date,
+            'numberOfTeams'=>$request->number_of_teams,
+            'season_id'=>$request->season_id,
             'leagueLogo'=>$leagueLogoPart,
             'status'=>$request->status,
         ]);
@@ -52,7 +61,8 @@ class LeagueController extends Controller
     //Edit
     public function leagueEdit(Request $request,$edit_id){
         $editLeague= League::find($edit_id);
-        return view('backend.pages.league.editLeague',compact('editLeague'));
+        $season=Season::all();
+        return view('backend.pages.league.editLeague',compact('editLeague','season'));
     }
 
     public function leagueUpdate(Request $request,$update_id){
@@ -60,6 +70,10 @@ class LeagueController extends Controller
 
     $checkValidation=Validator::make($request->all(),[
         'name'=>'required',
+        'start_date'=>'required',
+        'end_date'=>'required',
+        'number_of_teams'=>'required',
+        'season_id'=>'required',
         'league_logo'=>'image',
         'status'=>'required',
      ]);

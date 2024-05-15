@@ -12,8 +12,5 @@ class HomeController extends Controller
     {
         return view('backend.pages.dashboard');
     }  
-    public function admin()
-    {
-        return view('admin_panal');
-    }    
+ 
 }
