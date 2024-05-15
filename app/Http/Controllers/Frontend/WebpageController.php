@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\League;
+use App\Models\Player;
 use Illuminate\Http\Request;
 
 use function PHPUnit\Framework\matches;
@@ -26,5 +27,11 @@ class WebpageController extends Controller
     public function joinLeague()
     {
         return view('frontend.pages.joinLeague');
+    }
+
+    public function playerList()
+    {
+        $data = Player::paginate(10);
+        return view('frontend.pages.leaguePlayerList', compact('data'));
     }
 }

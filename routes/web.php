@@ -18,8 +18,11 @@ use App\Http\Controllers\Backend\ParticipantsController;
 use App\Http\Controllers\Backend\UserController;
 
 // Frontend
+
 Route::get('/', [WebpageController::class, 'homepage'])->name('homepage');
 Route::get('/matches', [WebpageController::class, 'match'])->name('matches');
+
+Route::get('League/player/list', [WebpageController::class, 'playerList'])->name('league.player.list');
 
 Route::get('/LeagueJoin', [WebpageController::class, 'joinLeague'])->name('league.join');
 

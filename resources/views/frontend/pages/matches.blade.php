@@ -14,9 +14,8 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card-body">
-                        <h5 class="card-title">{{$league->leagueName}}</h5>
-                        <p class="card-text"></p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <h3 class="card-title">{{$league->leagueName}}</h3>
+                        <p class="card-text">{{$league->season->seasonName}}</p>
                     </div>
                 </div>
                 <div class="col-md-4">
