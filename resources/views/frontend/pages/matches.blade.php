@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <a href="{{route('league.join')}}" class="btn btn-primary">Join</a>
+                    <a href="{{route('league.join',$league->id)}}" class="btn btn-primary">Join</a>
                 </div>
             </div><br>
 

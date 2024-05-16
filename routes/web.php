@@ -34,7 +34,7 @@ Route::post('/do-login', [webpageController::class, 'doLogin'])->name('team.logi
 //auth
 Route::group(['middleware' => 'authTeam'], function () {
 
-    Route::get('/LeagueJoin', [WebpageController::class, 'joinLeague'])->name('league.join');
+    Route::get('/LeagueJoin/{league_id}', [WebpageController::class, 'joinLeague'])->name('league.join');
 
     Route::get('/my-team', [webpageController::class, 'myTeam'])->name('myTeam');
     Route::get('/add/player/{id}', [MyTeamController::class, 'addPlayerToTeam'])->name('add.player');

@@ -25,8 +25,10 @@ class WebpageController extends Controller
         return view('frontend.pages.matches', compact('data'));
     }
 
-    public function joinLeague()
+    public function joinLeague($leagueId)
     {
+
+        //insert into team_league
         return view('frontend.pages.joinLeague');
     }
 
@@ -78,10 +80,17 @@ class WebpageController extends Controller
         //dd($checkLogin);
 
         if ($checkLogin) {
+            $team = auth()->guard('teamGuard')->user();
+            // if ($team->is_approved) {
 
 
             notify()->success("Login Succcessful");
             return redirect()->route('homepage');
+            // } else {
+            //     auth()->guard('teamGuard')->logout();
+            //     notify()->error("Team not yet approved.");
+            //     return redirect()->route('homepage');
+            // }
         }
 
         notify()->error("invalid email or password");
