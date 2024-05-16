@@ -45,11 +45,15 @@ return [
             'driver' => 'session',
             'provider' => 'customerProvider',
         ],
+        'teamGuard' => [
+            'driver' => 'session',
+            'provider' => 'teamProvider',
+        ],
     ],
 
 
 
-    
+
 
     /*
     |--------------------------------------------------------------------------
@@ -76,7 +80,11 @@ return [
 
         'customerProvider' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Customer::class, 
+            'model' => App\Models\Customer::class,
+        ],
+        'teamProvider' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Team::class,
         ],
         // 'users' => [
         //     'driver' => 'database',

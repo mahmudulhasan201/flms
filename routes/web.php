@@ -18,22 +18,24 @@ use App\Http\Controllers\Backend\ParticipantsController;
 use App\Http\Controllers\Backend\UserController;
 
 // Frontend
-
 Route::get('/', [WebpageController::class, 'homepage'])->name('homepage');
+
 Route::get('/matches', [WebpageController::class, 'match'])->name('matches');
-
 Route::get('League/player/list', [WebpageController::class, 'playerList'])->name('league.player.list');
-
-Route::get('/LeagueJoin', [WebpageController::class, 'joinLeague'])->name('league.join');
 
 Route::get('/registration', [CustomerController::class, 'registrationForm'])->name('registrationForm');
 Route::post('/do-registration', [CustomerController::class, 'doRegistration'])->name('do.registration');
 
-Route::get('/login', [CustomerController::class, 'loginForm'])->name('loginForm');
-Route::post('/do-login', [CustomerController::class, 'doLogin'])->name('customer.login');
-Route::get('/customer-logout', [CustomerController::class, 'customerLogout'])->name('customer.logout');
+Route::get('/login', [CustomerController::class, 'loginForm'])->name('team.loginForm');
+Route::post('/do-login', [CustomerController::class, 'doLogin'])->name('team.login');
 
+//auth
+Route::group(['middleware' => 'authTeam'], function () {
 
+    Route::get('/LeagueJoin', [WebpageController::class, 'joinLeague'])->name('league.join');
+    Route::get('/customer-logout', [CustomerController::class, 'customerLogout'])->name('customer.logout');
+    Route::get('/team-logout', [webpageController::class, 'teamLogout'])->name('team.logout');
+});
 
 // Backend
 Route::group(['prefix' => 'admin'], function () {

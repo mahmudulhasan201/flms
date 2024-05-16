@@ -15,16 +15,16 @@
                         <!-- <li><a href="blog.html" class="nav-link">Blog</a></li> -->
                         <li><a href="#" class="nav-link">Contact</a></li>
 
-                        @guest('customerGuard')
+                        @guest('teamGuard')
                         <li><a href="{{route('registrationForm')}}" class="nav-link">Registration</a></li>
 
                         <li><a href="{{route('loginForm')}}" class="nav-link">Login</a></li>
 
                         @endguest
 
-                        @auth('customerGuard')
+                        @auth('teamGuard')
 
-                        <li><a href="{{route('customer.logout')}}" class="nav-link">Logout</a></li>
+                        <li><a href="{{route('team.logout')}}" class="nav-link">Logout</a></li>
                         @endauth
 
                     </ul>
