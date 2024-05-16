@@ -23,11 +23,11 @@ Route::get('/', [WebpageController::class, 'homepage'])->name('homepage');
 Route::get('/matches', [WebpageController::class, 'match'])->name('matches');
 Route::get('League/player/list', [WebpageController::class, 'playerList'])->name('league.player.list');
 
-Route::get('/registration', [CustomerController::class, 'registrationForm'])->name('registrationForm');
-Route::post('/do-registration', [CustomerController::class, 'doRegistration'])->name('do.registration');
+Route::get('/registration', [webpageController::class, 'registrationForm'])->name('registrationForm');
+Route::post('/do-registration', [webpageController::class, 'doRegistration'])->name('do.registration');
 
-Route::get('/login', [CustomerController::class, 'loginForm'])->name('team.loginForm');
-Route::post('/do-login', [CustomerController::class, 'doLogin'])->name('team.login');
+Route::get('/login', [webpageController::class, 'loginForm'])->name('team.loginForm');
+Route::post('/do-login', [webpageController::class, 'doLogin'])->name('team.login');
 
 //auth
 Route::group(['middleware' => 'authTeam'], function () {

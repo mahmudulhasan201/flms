@@ -18,7 +18,7 @@
                         @guest('teamGuard')
                         <li><a href="{{route('registrationForm')}}" class="nav-link">Registration</a></li>
 
-                        <li><a href="{{route('loginForm')}}" class="nav-link">Login</a></li>
+                        <li><a href="{{route('team.loginForm')}}" class="nav-link">Login</a></li>
 
                         @endguest
 

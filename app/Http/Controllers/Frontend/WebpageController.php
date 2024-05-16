@@ -46,11 +46,13 @@ class WebpageController extends Controller
     {
         // dd($request->all());
         Team::create([
-            'name' => $request->customer_name,
-            'email' => $request->customer_email,
-            'mobile' => $request->customer_number,
-            'password' => bcrypt($request->customer_password),
-            'status' => $request->customer_status,
+            'teamName' => $request->team_name,
+            'teamLogo' => $request->team_logo,
+            'coachName' => $request->coach_name,
+            'ownerName' => $request->owner_name,
+            'ownerEmail' => $request->owner_email,
+            'password' => bcrypt($request->password),
+            'status' => $request->status,
         ]);
         notify()->success("Registration Successful");
         return redirect()->route('homepage');
@@ -60,7 +62,7 @@ class WebpageController extends Controller
 
     public function loginForm()
     {
-        return view('frontend.pages.customer.loginForm');
+        return view('frontend.pages.team.teamLogin');
     }
 
     public function doLogin(Request $request)
@@ -68,9 +70,9 @@ class WebpageController extends Controller
 
         // dd($request->all());
 
-        $loginInfo = ['email' => $request->email_address, 'password' => $request->password];
+        $loginInfo = ['ownerEmail' => $request->email_address, 'password' => $request->password];
 
-        $checkLogin = auth()->guard('customerGuard')->attempt($loginInfo);
+        $checkLogin = auth()->guard('teamGuard')->attempt($loginInfo);
 
         //dd($checkLogin);
 
@@ -84,9 +86,9 @@ class WebpageController extends Controller
         notify()->error("invalid email or password");
         return redirect()->back();
     }
-    public function customerLogout()
+    public function teamLogout()
     {
-        auth()->guard('customerGuard')->logout();
+        auth()->guard('teamGuard')->logout();
         return redirect()->route('homepage');
     }
 }

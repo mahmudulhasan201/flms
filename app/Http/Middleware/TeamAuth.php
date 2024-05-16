@@ -17,7 +17,7 @@ class TeamAuth
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::guard('teamGuard')->check()) {
-            return redirect()->route('team.login');
+            return redirect()->route('team.loginForm');
         }
 
         return $next($request);
