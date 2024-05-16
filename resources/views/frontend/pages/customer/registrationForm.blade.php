@@ -13,28 +13,39 @@
 @csrf
 
 <div class="form-group">
-    <label for=""> Customer Name</label>
-    <input type="text" name="customer_name" class="form-control" id=""  placeholder="Enter Name">
+    <label for=""> Team Name</label>
+    <input type="text" name="team_name" class="form-control" id=""  placeholder="">
   </div>
 
   <div class="form-group">
-    <label for="">Email address</label>
-    <input name="customer_email" type="email" class="form-control" id="" placeholder="Enter email">
+    <label for=""> Team Logo</label>
+    <input type="file" name="team_logo" class="form-control" id=""  placeholder="">
+  </div>
+
+  <div class="form-group">
+    <label for="">Coach Name</label>
+    <input name="coach_name" type="text" class="form-control" id="" placeholder="">
+  </div>
+
+  <div class="form-group">
+    <label for="">Owner Name</label>
+    <input name="owner_name" type="text" class="form-control" id="" placeholder="">
+  </div>
+
+  <div class="form-group">
+    <label for="">Owner Email address</label>
+    <input name="owner_email" type="email" class="form-control" id="" placeholder="Enter email">
   </div>
   
   <div class="form-group">
     <label for="">Password</label>
-    <input name="customer_password" type="password" class="form-control" id="" placeholder="Enter Password">
+    <input name="password" type="password" class="form-control" id="" placeholder="Enter Password">
   </div>
 
-  <div class="form-group">
-    <label for="">Phone Number</label>
-    <input name="customer_number" type="text" class="form-control" id="" placeholder="Enter Number">
-  </div>
 
   <div class="form-group">
     <label for="">Status</label>
-    <input name="customer_status" type="text" class="form-control" id="" placeholder="">
+    <input name="status" type="text" class="form-control" id="" placeholder="">
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>
