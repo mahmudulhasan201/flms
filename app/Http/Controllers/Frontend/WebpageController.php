@@ -91,4 +91,8 @@ class WebpageController extends Controller
         auth()->guard('teamGuard')->logout();
         return redirect()->route('homepage');
     }
+
+    public function myTeam(){
+        return view('frontend.pages.team.myTeam');
+    }
 }

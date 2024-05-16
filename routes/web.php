@@ -28,6 +28,7 @@ Route::post('/do-registration', [webpageController::class, 'doRegistration'])->n
 
 Route::get('/login', [webpageController::class, 'loginForm'])->name('team.loginForm');
 Route::post('/do-login', [webpageController::class, 'doLogin'])->name('team.login');
+Route::get('/my-team', [webpageController::class, 'myTeam'])->name('myTeam');
 
 //auth
 Route::group(['middleware' => 'authTeam'], function () {

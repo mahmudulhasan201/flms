@@ -13,7 +13,7 @@
                         <li><a href="{{route('matches')}}" class="nav-link">League</a></li>
                         <li><a href="{{route('league.player.list')}}" class="nav-link">Players</a></li>
                         <!-- <li><a href="blog.html" class="nav-link">Blog</a></li> -->
-                        <li><a href="#" class="nav-link">Contact</a></li>
+                        <li><a href="{{route('myTeam')}}" class="nav-link">My Team</a></li>
 
                         @guest('teamGuard')
                         <li><a href="{{route('registrationForm')}}" class="nav-link">Registration</a></li>
