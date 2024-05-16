@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\VanueController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ParticipantsController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Frontend\MyTeamController;
 
 // Frontend
 Route::get('/', [WebpageController::class, 'homepage'])->name('homepage');
@@ -28,12 +29,16 @@ Route::post('/do-registration', [webpageController::class, 'doRegistration'])->n
 
 Route::get('/login', [webpageController::class, 'loginForm'])->name('team.loginForm');
 Route::post('/do-login', [webpageController::class, 'doLogin'])->name('team.login');
-Route::get('/my-team', [webpageController::class, 'myTeam'])->name('myTeam');
+
 
 //auth
 Route::group(['middleware' => 'authTeam'], function () {
 
     Route::get('/LeagueJoin', [WebpageController::class, 'joinLeague'])->name('league.join');
+
+    Route::get('/my-team', [webpageController::class, 'myTeam'])->name('myTeam');
+    Route::get('/add/player/{id}', [MyTeamController::class, 'addPlayerToTeam'])->name('add.player');
+
     Route::get('/customer-logout', [CustomerController::class, 'customerLogout'])->name('customer.logout');
     Route::get('/team-logout', [webpageController::class, 'teamLogout'])->name('team.logout');
 });

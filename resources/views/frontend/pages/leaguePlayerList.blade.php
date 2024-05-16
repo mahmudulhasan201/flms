@@ -39,7 +39,7 @@
                     <!-- <td><img width="100" src="{{url('images/player',$player->playerImage)}}" alt=""></td> -->
                     <td><img width="100" src="{{url($player->playerImage)}}" alt=""></td>
                     <td>
-                        <a href="{{route('player.edit',$player->id)}}" class="btn btn-primary">Recruit</a>
+                        <a href="{{route('add.player',$player->id)}}" class="btn btn-primary">Recruit</a>
 
                     </td>
                 </tr>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\League;
 use App\Models\Player;
 use App\Models\Team;
+use App\Models\TeamPlayer;
 use Illuminate\Http\Request;
 
 
@@ -92,7 +93,10 @@ class WebpageController extends Controller
         return redirect()->route('homepage');
     }
 
-    public function myTeam(){
-        return view('frontend.pages.team.myTeam');
+    public function myTeam()
+    {
+        // dd("hello");
+        $data = TeamPlayer::with('player', 'team')->where('team_id', 1)->get();
+        return view('frontend.pages.team.myTeam', compact('data'));
     }
 }
