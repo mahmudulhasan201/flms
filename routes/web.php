@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\FixtureController;
 use App\Http\Controllers\Backend\VanueController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ParticipantsController;
+use App\Http\Controllers\Backend\TeamLeagueController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\MyTeamController;
 
@@ -99,6 +100,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::put('/player/update/{player_id}', [PlayerController::class, 'playerUpdate'])->name('player.update');
         Route::get('/player/view/{player_id}', [PlayerController::class, 'playerView'])->name('player.view');
         Route::get('/player/delete/{player_id}', [PlayerController::class, 'playerDelete'])->name('player.delete');
+
+        //TeamLeague
+        Route::get('/team/league/list',[TeamLeagueController::class,'teamLeagueList'])->name('teamLeague.list');
+        Route::get('/team/league/form',[TeamLeagueController::class,'teamLeagueForm'])->name('teamLeague.form');
+        Route::post('/team/league/form',[TeamLeagueController::class,'viewTeamLeagueForm'])->name('teamLeague.form');
+
+
 
         //Team Player
         Route::get('/team/player/list', [TeamPlayerController::class, 'teamPlayerList'])->name('teamPlayer.list');

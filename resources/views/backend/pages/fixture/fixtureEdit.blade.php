@@ -19,15 +19,28 @@
   </select>
 </div>
 
-  <div class="mb-3">
-    <label for="home_team_id" class="form-label">Home Team Id </label>
-    <input value="{{$editFixture->homeTeamId}}" type="text" name="home_team_id" class="form-control" id="" placeholder="">
+
+<div class="mb-3">
+    <label for="home_team_id" class="">Home Team Id</label>
+    <select name="home_team_id" class="form-control" id="">
+    <option value="">{{$editFixture->homeTeam->teamName}}</option>
+    @foreach($team as $data)
+    <option value="{{$data->id}}">{{$data->teamName}}</option>
+    @endforeach
+    </select>
   </div>
 
+
   <div class="mb-3">
-    <label for="" class="form-label">Away Team Id</label>
-    <input value="{{$editFixture->awayTeamId}}" type="text" name="awaay_team_id" class="form-control" id="" placeholder="">
+    <label for="away_team_id" class="">Home Team Id</label>
+    <select name="away_team_id" class="form-control" id="">
+    <option value="">{{$editFixture->awayTeam->teamName}}</option>
+    @foreach($team as $data)
+    <option value="{{$data->id}}">{{$data->teamName}}</option>
+    @endforeach
+    </select>
   </div>
+
 
   <div class="mb-3">
     <label for="session" class="form-label">Session</label>

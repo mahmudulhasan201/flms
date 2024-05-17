@@ -4,14 +4,15 @@
 
 <div class="content-inner">
 
+    
+
+
+
+    <div style="margin-left: 50px; margin-right:50px;">
     <h1>Player List</h1>
-
-
-
-    <div>
         <table class="table table-striped table-dark">
             <thead>
-                <tr>
+                <tr style="color: white; font-size: 20px; ">
                     <th scope="col">ID</th>
                     <th scope="col">Player Name</th>
                     <th scope="col">Born</th>
@@ -24,7 +25,7 @@
                     <th scope="col">Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="color: white;">
                 <tr>
                     @foreach($data as $player)
 

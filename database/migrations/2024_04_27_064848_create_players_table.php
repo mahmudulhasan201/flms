@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('playingRole');
             $table->string('battingStyle');
             $table->string('bowlingStyle');
-            $table->string('playerImage')->nullable(); 
+            $table->string('playerImage')->nullable();
+            $table->string('status')->default('active');
             
             $table->timestamps();
         });

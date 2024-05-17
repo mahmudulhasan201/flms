@@ -4,10 +4,10 @@
 <div class="content-inner">
 <div class="row" style="margin-top: 20px; margin-bottom:20px;">
 
-<div class="col-md-3">
+<div class="col-md-4">
 </div>
 
-<div class="col-md-6" style="border:2px solid black; padding:10px; border-radius:15px;">
+<div class="col-md-4" style="border:2px solid black; padding:10px; border-radius:15px;">
 
 <form action="{{route('team.login')}}" method="post">
     @csrf
@@ -25,7 +25,7 @@
 </form>
 </div>
 
-<div class="col-md-3">
+<div class="col-md-4">
 </div>
 
 </div>

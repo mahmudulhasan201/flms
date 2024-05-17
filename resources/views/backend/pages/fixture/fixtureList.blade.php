@@ -12,8 +12,8 @@
     <tr>
       <th scope="col">ID</th>
       <th scope="col">League Id</th>
-      <th scope="col">Home Team Id</th>
-      <th scope="col">Away Team Id</th>
+      <th scope="col">Home Team</th>
+      <th scope="col">Away Team</th>
       <th scope="col">Session</th>
       <th scope="col">Date</th>
       <th scope="col">Venue Id</th>
@@ -27,8 +27,8 @@
     <tr>
       <td>{{$data->id}}</td>
       <td>{{$data->league->leagueName}}</td>
-      <td>{{$data->homeTeamId}}</td>
-      <td>{{$data->awayTeamId}}</td>
+      <td>{{$data->homeTeam->teamName}}</td>
+      <td>{{$data->awayTeam->teamName}}</td>
       <td>{{$data->session}}</td>
       <td>{{$data->date}}</td>
       <td>{{$data->venue->venueName}}</td>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\League;
 use App\Models\Player;
 use App\Models\Team;
+use App\Models\TeamLeague;
 use App\Models\TeamPlayer;
 use Illuminate\Http\Request;
 
@@ -27,14 +28,16 @@ class WebpageController extends Controller
 
     public function joinLeague($leagueId)
     {
+        $varTeamLeague=TeamLeague::with(['league','team'])->get();
 
         //insert into team_league
-        return view('frontend.pages.joinLeague');
+        return view('frontend.pages.joinLeague', compact('varTeamLeague'));
     }
 
     public function playerList()
     {
-        $data = Player::paginate(10);
+        $data = Player::where('status', 'active')->paginate(10);
+        // $data = Player::paginate(10);
         return view('frontend.pages.leaguePlayerList', compact('data'));
     }
 

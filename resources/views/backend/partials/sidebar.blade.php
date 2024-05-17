@@ -40,6 +40,15 @@
 
  <ul class="nav flex-column mb-auto">
   <li class="nav-item">
+    <a class="nav-link d-flex align-items-center gap-2" href="{{route('teamLeague.list')}}">
+      <svg class="bi"><use xlink:href="#door-closed"/></svg>
+      Team League
+    </a>
+  </li>
+ </ul>
+
+ <ul class="nav flex-column mb-auto">
+  <li class="nav-item">
     <a class="nav-link d-flex align-items-center gap-2" href="{{route('player.list')}}">
       <svg class="bi"><use xlink:href="#door-closed"/></svg>
       Player
@@ -74,32 +83,112 @@
   </li>
  </ul>
 
+ 
+ <ul class="nav flex-column">
+   <li class="nav-item">
+     <a class="nav-link d-flex align-items-center gap-2" href="{{route('logout')}}">
+       <svg class="bi"><use xlink:href="#door-closed"/></svg>
+       Logout
+      </a>
+    </li>
+  </ul>
+</div> 
+
+<ul class="nav flex-column">
+ <li class="nav-item">
+   <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="">
+     <svg class="bi"><use xlink:href="#house-fill"/></svg>
+
+   </a>
+ </li>
+</ul>
+
  <ul class="nav flex-column mb-auto">
   <li class="nav-item">
-    <a class="nav-link d-flex align-items-center gap-2" href="{{route('participants')}}">
+    <a class="nav-link d-flex align-items-center gap-2" href="">
       <svg class="bi"><use xlink:href="#door-closed"/></svg>
-      Habijabi
+
     </a>
   </li>
  </ul>
 
- <ul class="nav flex-column">
+ <ul class="nav flex-column mb-auto">
   <li class="nav-item">
-    <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="{{route('category.list')}}">
-      <svg class="bi"><use xlink:href="#house-fill"/></svg>
-       Category
+    <a class="nav-link d-flex align-items-center gap-2" href="">
+      <svg class="bi"><use xlink:href="#door-closed"/></svg>
+
     </a>
   </li>
  </ul>
 
- <ul class="nav flex-column">
+ <ul class="nav flex-column mb-auto">
   <li class="nav-item">
-    <a class="nav-link d-flex align-items-center gap-2" href="{{route('logout')}}">
+    <a class="nav-link d-flex align-items-center gap-2" href="">
       <svg class="bi"><use xlink:href="#door-closed"/></svg>
-      Logout
+
     </a>
   </li>
  </ul>
- </div> 
-       
+
+ <ul class="nav flex-column mb-auto">
+  <li class="nav-item">
+    <a class="nav-link d-flex align-items-center gap-2" href="">
+      <svg class="bi"><use xlink:href="#door-closed"/></svg>
+
+    </a>
+  </li>
+ </ul>
+
+ <ul class="nav flex-column mb-auto">
+  <li class="nav-item">
+    <a class="nav-link d-flex align-items-center gap-2" href="">
+      <svg class="bi"><use xlink:href="#door-closed"/></svg>
+
+    </a>
+  </li>
+ </ul>
+
+ <ul class="nav flex-column mb-auto">
+  <li class="nav-item">
+    <a class="nav-link d-flex align-items-center gap-2" href="">
+      <svg class="bi"><use xlink:href="#door-closed"/></svg>
+
+    </a>
+  </li>
+ </ul>
+
+ <ul class="nav flex-column mb-auto">
+  <li class="nav-item">
+    <a class="nav-link d-flex align-items-center gap-2" href="">
+      <svg class="bi"><use xlink:href="#door-closed"/></svg>
+
+    </a>
+  </li>
+ </ul>
  
+ <ul class="nav flex-column mb-auto">
+  <li class="nav-item">
+    <a class="nav-link d-flex align-items-center gap-2" href="">
+      <svg class="bi"><use xlink:href="#door-closed"/></svg>
+
+    </a>
+  </li>
+ </ul>
+
+ <ul class="nav flex-column mb-auto">
+  <li class="nav-item">
+    <a class="nav-link d-flex align-items-center gap-2" href="">
+      <svg class="bi"><use xlink:href="#door-closed"/></svg>
+
+    </a>
+  </li>
+ </ul>
+
+ <ul class="nav flex-column mb-auto">
+  <li class="nav-item">
+    <a class="nav-link d-flex align-items-center gap-2" href="">
+      <svg class="bi"><use xlink:href="#door-closed"/></svg>
+
+    </a>
+  </li>
+ </ul>
