@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="content-inner">
-    <h1 class="text-center">League</h1>
+    <h1 class="text-center">League</h1><br>
     <div class="container">
         @foreach($data as $league)
 

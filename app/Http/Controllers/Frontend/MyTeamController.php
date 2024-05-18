@@ -16,7 +16,6 @@ class MyTeamController extends Controller
 
     public function addPlayerToTeam($id)
     {
-
         // dd($id);
         $teamId = auth('teamGuard')->user()->id;
 
@@ -34,19 +33,20 @@ class MyTeamController extends Controller
             return redirect()->back();
         }
 
-        TeamPlayer::create([
+        TeamPlayer::create
+        ([
             'team_id' => auth('teamGuard')->user()->id,
             'player_id' => $id,
             // 'status update
         ]);
         
         $playerStatus=Player::find($id);
-        $playerStatus->update([
+        $playerStatus->update
+        ([
             'status' => 'inactive'
         ]);
 
         notify()->success('Player is now in your Team');
-
         return redirect()->route('league.player.list');
     }
 }

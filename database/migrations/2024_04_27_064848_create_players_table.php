@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('fullName');
             $table->date('born');
             $table->longText('birthPlace');
-            $table->double('height');
+            $table->integer('height');
             $table->string('playingRole');
             $table->string('battingStyle');
             $table->string('bowlingStyle');

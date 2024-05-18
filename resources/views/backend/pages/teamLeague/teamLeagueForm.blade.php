@@ -26,6 +26,16 @@
       </select>
     </div><br>
 
+    <div class="mb-3">
+      <label for="season_id" class="">Season Id</label>
+      <select name="season_id" class="form-control" id="">
+      <option value="">Select Season</option>
+      @foreach($varSeason as $data)
+      <option value="{{$data->id}}">{{$data->seasonName}}</option>  
+      @endforeach
+      </select>
+    </div><br>
+
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </div> 

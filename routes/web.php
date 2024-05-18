@@ -22,7 +22,9 @@ use App\Http\Controllers\Frontend\MyTeamController;
 // Frontend
 Route::get('/', [WebpageController::class, 'homepage'])->name('homepage');
 
-Route::get('/matches', [WebpageController::class, 'match'])->name('matches');
+Route::get('/league', [WebpageController::class, 'league'])->name('league');
+Route::get('/league-list', [WebpageController::class, 'leagueList'])->name('view.leagueList');
+
 Route::get('League/player/list', [WebpageController::class, 'playerList'])->name('league.player.list');
 
 Route::get('/registration', [webpageController::class, 'registrationForm'])->name('registrationForm');
@@ -30,6 +32,7 @@ Route::post('/do-registration', [webpageController::class, 'doRegistration'])->n
 
 Route::get('/login', [webpageController::class, 'loginForm'])->name('team.loginForm');
 Route::post('/do-login', [webpageController::class, 'doLogin'])->name('team.login');
+
 
 
 //auth
@@ -106,6 +109,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/team/league/form',[TeamLeagueController::class,'teamLeagueForm'])->name('teamLeague.form');
         Route::post('/team/league/form',[TeamLeagueController::class,'viewTeamLeagueForm'])->name('teamLeague.form');
 
+        Route::get('/team/league/delete/{id}', [TeamLeagueController::class, 'teamLeagueDelete'])->name('team.league.delete');
 
 
         //Team Player

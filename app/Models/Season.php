@@ -9,4 +9,9 @@ class Season extends Model
 {
     use HasFactory;
     protected $guarded=[];
+
+    public function teamLeagues()
+    {
+        return $this->hasMany(TeamLeague::class);
+    }
 }

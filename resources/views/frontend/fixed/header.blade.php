@@ -3,15 +3,21 @@
         <div class="d-flex align-items-center">
             <div class="site-logo">
                 <a href="index.html">
-                    <img src="https://preview.colorlib.com/theme/soccer/images/logo.png.webp" alt="Logo">
+                    <!-- <img src="https://preview.colorlib.com/theme/soccer/images/logo.png.webp" alt="Logo"> -->
+                    <h1 style="font-family:Fantasy">SCORRER</h1>
                 </a>
             </div>
             <div class="ml-auto">
                 <nav class="site-navigation position-relative text-right" role="navigation">
                     <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                         <li class="active"><a href="{{route('homepage')}}" class="nav-link">Home</a></li>
-                        <li><a href="{{route('matches')}}" class="nav-link">League</a></li>
+
+                        <li><a href="{{route('league')}}" class="nav-link">League</a></li>
+
+                        <li><a href="{{route('view.leagueList')}}" class="nav-link">League List</a></li>
+
                         <li><a href="{{route('league.player.list')}}" class="nav-link">Players</a></li>
+                        
                         <!-- <li><a href="blog.html" class="nav-link">Blog</a></li> -->
 
                         @guest('teamGuard')
@@ -23,7 +29,7 @@
 
                         @auth('teamGuard')
                         <li><a href="{{route('myTeam')}}" class="nav-link">My Team</a></li>
-
+                        <li>{{auth('teamGuard')->user()->ownerName}}</li>
                         <li><a href="{{route('team.logout')}}" class="nav-link">Logout</a></li>
                         @endauth
 

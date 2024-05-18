@@ -18,8 +18,8 @@ class TeamLeague extends Model
         return $this->belongsTo(Team::class, 'team_id');
     }
 
-    // public function teamLeagues()
-    // {
-    //     return $this->hasMany(TeamLeague::class);
-    // }
+    public function season()
+    {
+        return $this->belongsTo(Season::class, 'season_id');
+    }
 }

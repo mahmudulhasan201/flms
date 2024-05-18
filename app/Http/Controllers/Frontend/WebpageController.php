@@ -12,28 +12,54 @@ use Illuminate\Http\Request;
 
 
 class WebpageController extends Controller
-{
+{   //Frontend Homepage
     public function homepage()
     {
         return view('frontend.pages.home');
     }
 
-    public function match()
+
+    //League Page
+    public function league()
     {
         // $data = League::with('season')->where('status', 'Active')->where('season_id', '1')->get();
         $data = League::with('season')->where('status', 'Active')->get();
 
-        return view('frontend.pages.matches', compact('data'));
+        return view('frontend.pages.league.leagueForm', compact('data'));
     }
 
+    //View League List
+    public function leagueList(){
+        $varLeagueList=TeamLeague::all();
+        return view('frontend.pages.league.leagueListForm', compact('varLeagueList'));
+    }
+    //Join Button
     public function joinLeague($leagueId)
     {
-        $varTeamLeague=TeamLeague::with(['league','team'])->get();
+        $existingTeamLeague = TeamLeague::where('league_id', $leagueId)
+            ->where('team_id', auth('teamGuard')->user()->id)
+            ->exists();
+        if ($existingTeamLeague) {
 
+            // User is already in the league, no need to add again
+            notify()->error('You are already in this league.');
+            return redirect()->route('homepage');
+        }
+        
+        $varTeamLeague = League::Find($leagueId);
+        TeamLeague::create([
+            'league_id' => $varTeamLeague->id,
+            'team_id' => auth('teamGuard')->user()->id,
+            'season_id' => $varTeamLeague->season_id,
+        ]);
+
+        $varTeam = TeamLeague::with(['league', 'team'])->get();
         //insert into team_league
-        return view('frontend.pages.joinLeague', compact('varTeamLeague'));
+        return view('frontend.pages.joinLeague', compact('varTeam'));
     }
 
+
+    //Player List
     public function playerList()
     {
         $data = Player::where('status', 'active')->paginate(10);
@@ -43,6 +69,7 @@ class WebpageController extends Controller
 
 
 
+    //Frontend Registration Form
     public function registrationForm()
     {
         return view('frontend.pages.customer.registrationForm');
@@ -64,8 +91,8 @@ class WebpageController extends Controller
         return redirect()->route('homepage');
     }
 
-    //Frontend Login
 
+    //Frontend Login
     public function loginForm()
     {
         return view('frontend.pages.team.teamLogin');
@@ -73,22 +100,16 @@ class WebpageController extends Controller
 
     public function doLogin(Request $request)
     {
-
         // dd($request->all());
-
         $loginInfo = ['ownerEmail' => $request->email_address, 'password' => $request->password];
-
         $checkLogin = auth()->guard('teamGuard')->attempt($loginInfo);
-
         //dd($checkLogin);
-
         if ($checkLogin) {
             $team = auth()->guard('teamGuard')->user();
             // if ($team->is_approved) {
 
-
             notify()->success("Login Succcessful");
-            return redirect()->route('homepage');
+            return redirect()->route('league');
             // } else {
             //     auth()->guard('teamGuard')->logout();
             //     notify()->error("Team not yet approved.");
@@ -99,16 +120,20 @@ class WebpageController extends Controller
         notify()->error("invalid email or password");
         return redirect()->back();
     }
+
+    //Team LogOut
     public function teamLogout()
     {
         auth()->guard('teamGuard')->logout();
         return redirect()->route('homepage');
     }
 
+
+    //MyTeam Page
     public function myTeam()
     {
         // dd("hello");
-        $data = TeamPlayer::with('player', 'team')->where('team_id', 1)->get();
+        $data = TeamPlayer::with('player', 'team')->where('team_id',auth('teamGuard')->user()->id)->get();
         return view('frontend.pages.team.myTeam', compact('data'));
     }
 }
