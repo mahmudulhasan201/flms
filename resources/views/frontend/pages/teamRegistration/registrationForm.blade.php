@@ -11,6 +11,7 @@
 
       <form action="{{route('do.registration')}}" method="post">
         @csrf
+        <h2>Team Owner Registration Form</h2><br>
 
         <div class="form-group" style="color: white;">
           <label for=""> Team Name</label>

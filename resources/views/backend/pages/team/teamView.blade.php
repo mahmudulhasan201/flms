@@ -8,8 +8,7 @@
 <p>Team Name: {{$viewTeam->teamName}}</p>
 <p>Coach Name: {{$viewTeam->coachName}}</p>  
 <p>Owner Name: {{$viewTeam->ownerName}}</p>  
-<p>Owner Email: {{$viewTeam->ownerEmail}}</p>  
-<p>Status: {{$viewTeam->status}}</p>  
+<p>Owner Email: {{$viewTeam->ownerEmail}}</p>   
 <p>Team Logo: <img width="100" src="{{url('images/team',$viewTeam->teamLogo)}}" alt=""></p> 
 
 

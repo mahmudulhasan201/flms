@@ -14,14 +14,25 @@
 
                         <li><a href="{{route('league')}}" class="nav-link">League</a></li>
 
-                        <li><a href="{{route('view.leagueList')}}" class="nav-link">League List</a></li>
+                        <li><a href="{{route('view.leagueList')}}" class="nav-link">Team List</a></li>
 
                         <li><a href="{{route('league.player.list')}}" class="nav-link">Players</a></li>
-                        
-                        <!-- <li><a href="blog.html" class="nav-link">Blog</a></li> -->
+
+                        <li><a href="blog.html" class="nav-link">Fixture</a></li>
+                        <li><a href="blog.html" class="nav-link">Point Table</a></li>
 
                         @guest('teamGuard')
-                        <li><a href="{{route('registrationForm')}}" class="nav-link">Registration</a></li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="" data-toggle="dropdown">Registration</a>
+                            <!-- Dropdown list -->
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{route('registrationForm')}}">Registration as Owner</a></li>
+                                <li><a class="dropdown-item" href="{{route('player.registrationForm')}}">Registration as Player</a></li>
+                            </ul>
+                        </li>
+
+
 
                         <li><a href="{{route('team.loginForm')}}" class="nav-link">Login</a></li>
 

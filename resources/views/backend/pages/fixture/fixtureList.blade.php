@@ -11,12 +11,12 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">League Id</th>
+      <th scope="col">League</th>
       <th scope="col">Home Team</th>
       <th scope="col">Away Team</th>
       <th scope="col">Session</th>
       <th scope="col">Date</th>
-      <th scope="col">Venue Id</th>
+      <th scope="col">Venue</th>
       <th scope="col">Action</th>
     </tr>
   </thead>

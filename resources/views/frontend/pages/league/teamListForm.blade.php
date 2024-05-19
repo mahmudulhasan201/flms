@@ -14,12 +14,12 @@
                         <th scope="col">Team Owner Name</th>
                         <th scope="col">Team Name</th>
                         <th scope="col">League Name</th>
-                        <th scope="col">Season ID</th>
+                        <th scope="col">Season</th>
                        </tr>
                     </thead>
 
                     <tbody>
-                           @foreach($varLeagueList as $key=>$data)
+                           @foreach($varTeamList as $key=>$data)
                         <tr>
                             <td>{{$key+1}}</td>
                             <td>{{$data->team->ownerName}}</td>

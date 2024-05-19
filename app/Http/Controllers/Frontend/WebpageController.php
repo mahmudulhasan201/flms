@@ -29,9 +29,10 @@ class WebpageController extends Controller
     }
 
     //View League List
-    public function leagueList(){
-        $varLeagueList=TeamLeague::all();
-        return view('frontend.pages.league.leagueListForm', compact('varLeagueList'));
+    public function teamList()
+    {
+        $varTeamList = TeamLeague::all();
+        return view('frontend.pages.league.teamListForm', compact('varTeamList'));
     }
     //Join Button
     public function joinLeague($leagueId)
@@ -45,7 +46,7 @@ class WebpageController extends Controller
             notify()->error('You are already in this league.');
             return redirect()->route('homepage');
         }
-        
+
         $varTeamLeague = League::Find($leagueId);
         TeamLeague::create([
             'league_id' => $varTeamLeague->id,
@@ -72,7 +73,7 @@ class WebpageController extends Controller
     //Frontend Registration Form
     public function registrationForm()
     {
-        return view('frontend.pages.customer.registrationForm');
+        return view('frontend.pages.teamRegistration.registrationForm');
     }
 
     public function doRegistration(Request $request)
@@ -133,7 +134,8 @@ class WebpageController extends Controller
     public function myTeam()
     {
         // dd("hello");
-        $data = TeamPlayer::with('player', 'team')->where('team_id',auth('teamGuard')->user()->id)->get();
+        $data = TeamPlayer::with('player', 'team')->where('team_id', auth('teamGuard')->user()->id)->get();
+        // dd($data);
         return view('frontend.pages.team.myTeam', compact('data'));
     }
 }

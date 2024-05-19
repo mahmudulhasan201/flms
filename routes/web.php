@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\WebpageController;
-use App\Http\Controllers\Frontend\CustomerController;
+use App\Http\Controllers\Frontend\MyTeamController;
+use App\Http\Controllers\Frontend\WebPlayerController;
 
 //backend
 use App\Http\Controllers\HomeController;
@@ -17,21 +18,25 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ParticipantsController;
 use App\Http\Controllers\Backend\TeamLeagueController;
 use App\Http\Controllers\Backend\UserController;
-use App\Http\Controllers\Frontend\MyTeamController;
 
 // Frontend
 Route::get('/', [WebpageController::class, 'homepage'])->name('homepage');
 
 Route::get('/league', [WebpageController::class, 'league'])->name('league');
-Route::get('/league-list', [WebpageController::class, 'leagueList'])->name('view.leagueList');
+Route::get('/team-list', [WebpageController::class, 'teamList'])->name('view.leagueList');
 
 Route::get('League/player/list', [WebpageController::class, 'playerList'])->name('league.player.list');
 
-Route::get('/registration', [webpageController::class, 'registrationForm'])->name('registrationForm');
+Route::get('/team-registration', [webpageController::class, 'registrationForm'])->name('registrationForm');
 Route::post('/do-registration', [webpageController::class, 'doRegistration'])->name('do.registration');
-
 Route::get('/login', [webpageController::class, 'loginForm'])->name('team.loginForm');
 Route::post('/do-login', [webpageController::class, 'doLogin'])->name('team.login');
+
+//Web Player Registration & Login
+Route::get('/player-registration', [WebPlayerController::class, 'playerRegistrationForm'])->name('player.registrationForm');
+Route::post('/do-player-registration', [WebPlayerController::class, 'doPlayerRegistration'])->name('doPlayer.Registration');
+Route::get('/player-login', [WebPlayerController::class, 'playerLoginForm'])->name('player.login');
+Route::post('/do-player-login', [WebPlayerController::class, 'doPlayerLogin'])->name('player.login');
 
 
 
@@ -41,9 +46,7 @@ Route::group(['middleware' => 'authTeam'], function () {
     Route::get('/LeagueJoin/{league_id}', [WebpageController::class, 'joinLeague'])->name('league.join');
 
     Route::get('/my-team', [webpageController::class, 'myTeam'])->name('myTeam');
-    Route::get('/add/player/{id}', [MyTeamController::class, 'addPlayerToTeam'])->name('add.player');
-
-    Route::get('/customer-logout', [CustomerController::class, 'customerLogout'])->name('customer.logout');
+    Route::get('/add/player/{id}',[MyTeamController::class, 'addPlayerToTeam'])->name('add.player');
     Route::get('/team-logout', [webpageController::class, 'teamLogout'])->name('team.logout');
 });
 

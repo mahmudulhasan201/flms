@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('ownerName');
             $table->string('ownerEmail');
             $table->string('password');
-            $table->string('status');
+            $table->string('status')->default('active');
             $table->timestamps();
         });
     }

@@ -10,110 +10,124 @@ use Illuminate\Support\Facades\Validator;
 
 class TeamController extends Controller
 {
-    public function teamList(){
+    public function teamList()
+    {
 
-        $data=Team::paginate(5);
-        return view('backend.pages.team.t-list',compact('data'));
+        $data = Team::paginate(5);
+        return view('backend.pages.team.t-list', compact('data'));
     }
 
-    public function teamForm(){
+    public function teamForm()
+    {
         return view('backend.pages.team.form');
-    } 
+    }
 
-    public function submitTeamForm(Request $request){
-          // dd($request->all());
-        $checkValidation=Validator::make($request->all(),[
-            'Name'=>'required',
-            'teamlogo'=>'image',
-            'cname'=>'required',
-            'Oname'=>'required',
-            'Oemail'=>'required',
-            'ownerpassword'=>'required',
+    public function submitTeamForm(Request $request)
+    {
+        // dd($request->all());
+        $checkValidation = Validator::make($request->all(), [
+            'Name' => 'required',
+            'teamlogo' => 'image',
+            'cname' => 'required',
+            'Oname' => 'required',
+            'Oemail' => 'required',
+            'ownerpassword' => 'required',
         ]);
-        if($checkValidation->fails()){
+        if ($checkValidation->fails()) {
             // notify()->error("something went wrong");
             notify()->error($checkValidation->getMessageBag());
             return redirect()->back();
         }
-        $fileName='';
-        if($request->hasFile('teamlogo')){
-            $fileName=date('YmdHis').'.'.$request->file('teamlogo')->getClientOriginalExtension();
-            $request->file('teamlogo')->storeAs('/team',$fileName);
+        $fileName = '';
+        if ($request->hasFile('teamlogo')) {
+            $fileName = date('YmdHis') . '.' . $request->file('teamlogo')->getClientOriginalExtension();
+            $request->file('teamlogo')->storeAs('/team', $fileName);
         }
-        
+
+        $teamDocumentsPaths = [];
+        if ($request->hasFile('team_documents')) {
+            foreach ($request->file('team_documents') as $file) {
+                $path = $file->store('team_documents');
+                $teamDocumentsPaths[] = $path;
+            }
+        }
+
 
         Team::create([
-            'teamName'=>$request->Name,  
-            'teamLogo'=>$fileName,
-            'coachName'=>$request-> cname,
-            'ownerName'=>$request->Oname,
-            'ownerEmail'=>strtolower($request->Oemail),  //strtolower=String To lower
-            'password'=>bcrypt($request->ownerpassword),
-             'status'=>$request->status,
+            'teamName' => $request->Name,
+            'teamLogo' => $fileName,
+            'coachName' => $request->cname,
+            'ownerName' => $request->Oname,
+            'ownerEmail' => strtolower($request->Oemail),  //strtolower=String To lower
+            'password' => bcrypt($request->ownerpassword),
+            'status'=>$request->status,
+
         ]);
-        notify()->success('create succesful'); 
+        notify()->success('create succesful');
         return redirect()->route('team.form');
     }
 
     //Edit
-    public function teamEdit(Request $request,$edit_id){
-        $editTeam= Team::find($edit_id);
-        return view('backend.pages.team.teamEdit',compact('editTeam'));
+    public function teamEdit(Request $request, $edit_id)
+    {
+        $editTeam = Team::find($edit_id);
+        return view('backend.pages.team.teamEdit', compact('editTeam'));
     }
 
-    public function teamUpdate(Request $request, $update_id){
-        $updateTeam=Team::find($update_id); 
+    public function teamUpdate(Request $request, $update_id)
+    {
+        $updateTeam = Team::find($update_id);
 
-        $checkValidation=Validator::make($request->all(),[
-            'Name'=>'required',
-            'teamlogo'=>'image',
-            'cname'=>'required',
-            'Oname'=>'required',
-            'Oemail'=>'required',
-            'ownerpassword'=>'required',
+        $checkValidation = Validator::make($request->all(), [
+            'Name' => 'required',
+            'teamlogo' => 'image',
+            'cname' => 'required',
+            'Oname' => 'required',
+            'Oemail' => 'required',
+            'ownerpassword' => 'required',
         ]);
-        if($checkValidation->fails()){
+        if ($checkValidation->fails()) {
             notify()->error($checkValidation->getMessageBag());
             return redirect()->back();
         }
-        $fileName='';
-        if($request->hasFile('teamlogo')){
-            $fileName=date('YmdHis').'.'.$request->file('teamlogo')->getClientOriginalExtension();
-            $request->file('teamlogo')->storeAs('/team',$fileName);
-            File::delete('images/team'. $updateTeam->teamLogo);
+        $fileName = '';
+        if ($request->hasFile('teamlogo')) {
+            $fileName = date('YmdHis') . '.' . $request->file('teamlogo')->getClientOriginalExtension();
+            $request->file('teamlogo')->storeAs('/team', $fileName);
+            File::delete('images/team' . $updateTeam->teamLogo);
         }
-        
+
 
         $updateTeam->update([
-            'teamName'=>$request->Name,  
-            'teamLogo'=>$fileName,
-            'coachName'=>$request-> cname,
-            'ownerName'=>$request->Oname,
-            'ownerEmail'=>strtolower($request->Oemail),  //strtolower means String To lower
-            'password'=>bcrypt($request->ownerpassword),
-             'status'=>$request->status,
+            'teamName' => $request->Name,
+            'teamLogo' => $fileName,
+            'coachName' => $request->cname,
+            'ownerName' => $request->Oname,
+            'ownerEmail' => strtolower($request->Oemail),  //strtolower means String To lower
+            'password' => bcrypt($request->ownerpassword),
         ]);
-        notify()->success('Update succesful'); 
+        notify()->success('Update succesful');
         return redirect()->route('team.list');
-
     }
 
 
 
     //View
-    public function teamView($t_id){
-        $viewTeam=Team::find($t_id);
+    public function teamView($t_id)
+    {
+        $viewTeam = Team::find($t_id);
 
-        return  view('backend.pages.team.teamView',compact('viewTeam'));
+        return  view('backend.pages.team.teamView', compact('viewTeam'));
     }
 
 
 
 
     //Delete
-    public function teamDelete($t_id){
+    public function teamDelete($t_id)
+    {
         // dd($s_id->all());
-        $deleteTeam= Team::find($t_id);
+        $deleteTeam = Team::find($t_id);
         $deleteTeam->delete();
 
 
