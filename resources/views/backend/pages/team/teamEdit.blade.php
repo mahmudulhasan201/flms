@@ -33,11 +33,6 @@
     </div>
 
     <div class="mb-3">
-    <label for="ownerpassword" class="form-label">Owner Password</label>
-    <input value="{{$editTeam->password}}"  type="password" name="ownerpassword" class="form-control" id="" aria-describedby="" placeholder="enter Owner password">
-    </div>
-
-    <div class="mb-3">
     <label for="Status" class="form-label">Status</label>
     <input value="{{$editTeam->status}}" name="status" class="form-control" id="" placeholder="status">
   </div>
