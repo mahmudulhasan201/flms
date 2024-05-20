@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Fixture;
 use App\Models\League;
 use App\Models\Player;
 use App\Models\Team;
 use App\Models\TeamLeague;
 use App\Models\TeamPlayer;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 
@@ -15,7 +17,12 @@ class WebpageController extends Controller
 {   //Frontend Homepage
     public function homepage()
     {
-        return view('frontend.pages.home');
+        $today = Carbon::today();
+        $matches = Fixture::where('date', '>=', $today)
+            ->orderBy('date', 'asc')
+            ->first();
+        // dd($matches);
+        return view('frontend.pages.home', compact('matches'));
     }
 
 

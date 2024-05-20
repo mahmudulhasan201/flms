@@ -18,6 +18,8 @@ class PlayerFactory extends Factory
     {
         return [
             'fullName' => fake()->unique()->name(),
+            'email' => fake()->unique()->email(),
+            'password' => bcrypt('123456'),
             'born' => fake()->date(),
             'birthplace' => fake()->streetName(),
             'height' => fake()->randomFloat('2', 0, 2),
