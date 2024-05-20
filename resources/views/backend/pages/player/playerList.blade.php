@@ -10,11 +10,12 @@
 
 
  <div>
- <table class="table table-striped table-dark">
+ <table class="table table-striped">
   <thead>
     <tr>
     <th scope="col">ID</th> 
       <th scope="col">Player Name</th>
+      <th scope="col">Player Email</th>
       <th scope="col">Born</th>
       <th scope="col">Birth Place</th>
       <th scope="col">Height (m)</th>
@@ -31,6 +32,7 @@
 
       <td>{{$player->id}}</td>
       <td>{{$player->fullName}}</td>
+      <td>{{$player->email}}</td>
       <td>{{$player->born}}</td>
       <td>{{$player->birthPlace}}</td>
       <td>{{$player->height}}</td>

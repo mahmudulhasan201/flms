@@ -98,7 +98,7 @@ class FixtureController extends Controller
 
 
 //Delete
-   public function fixtureDelete ($f_id){
+   public function fixtureDelete ($f_id){  
     $deleteFixture=Fixture::find($f_id);
     
     $deleteFixture->delete();

@@ -10,7 +10,7 @@
         <div class="card mb-3">
             <div class="row">
                 <div class="col-md-4">
-                    <img class="card-img-top" src="{{url('images/league',$league->leagueLogo)}}" alt="Card image cap">
+                    <img style="width: 200px;" class="card-img-top"  src="{{url('images/league',$league->leagueLogo)}}" alt="Card image cap">
                 </div>
                 <div class="col-md-4">
                     <div class="card-body">

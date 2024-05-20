@@ -18,8 +18,9 @@
 
                         <li><a href="{{route('league.player.list')}}" class="nav-link">Players</a></li>
 
-                        <li><a href="blog.html" class="nav-link">Fixture</a></li>
-                        <li><a href="blog.html" class="nav-link">Point Table</a></li>
+                        <li><a href="" class="nav-link">Fixture</a></li>
+
+                        <li><a href="" class="nav-link">Point Table</a></li>
 
                         @guest('teamGuard')
 
@@ -31,9 +32,6 @@
                                 <li><a class="dropdown-item" href="{{route('player.registrationForm')}}">Registration as Player</a></li>
                             </ul>
                         </li>
-
-
-
                         <li><a href="{{route('team.loginForm')}}" class="nav-link">Login</a></li>
 
                         @endguest

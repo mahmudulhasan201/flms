@@ -39,8 +39,11 @@
       </div>
 
       <div class="mb-3">
-        <label for="Status" class="form-label">Status</label>
-        <input name="status" class="form-control" id="" placeholder="status">
+        <label for="status" class="form-label">Status</label>
+        <select class="form-control" name="status" id="">
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+        </select>
       </div>
 
 

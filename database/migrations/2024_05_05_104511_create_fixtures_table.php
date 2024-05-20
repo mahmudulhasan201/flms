@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('session');
             $table->date('date');
             $table->string('venue_id');
+            $table->string('status')->default('active');
             $table->timestamps();  
         }); 
     }

@@ -17,6 +17,7 @@
       <th scope="col">Session</th>
       <th scope="col">Date</th>
       <th scope="col">Venue</th>
+      <th scope="col">Status</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -32,6 +33,7 @@
       <td>{{$data->session}}</td>
       <td>{{$data->date}}</td>
       <td>{{$data->venue->venueName}}</td>
+      <td>{{$data->status}}</td>
       <td>
         <a href="{{route('fixture.view',$data->id)}}" class="btn btn-primary">View</a>
         <a href="{{route('fixture.edit',$data->id)}}" class="btn btn-success">Edit</a>

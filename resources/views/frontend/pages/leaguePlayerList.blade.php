@@ -15,6 +15,7 @@
                 <tr style="color: white; font-size: 20px; ">
                     <th scope="col">ID</th>
                     <th scope="col">Player Name</th>
+                    <th scope="col">Email</th>
                     <th scope="col">Born</th>
                     <th scope="col">Birth Place</th>
                     <th scope="col">Height (m)</th>
@@ -31,14 +32,15 @@
 
                     <td>{{$player->id}}</td>
                     <td>{{$player->fullName}}</td>
+                    <td>{{$player->email}}</td>
                     <td>{{$player->born}}</td>
                     <td>{{$player->birthPlace}}</td>
                     <td>{{$player->height}}</td>
                     <td>{{$player->playingRole}}</td>
                     <td>{{$player->battingStyle}}</td>
                     <td>{{$player->bowlingStyle}}</td>
-                    <!-- <td><img width="100" src="{{url('images/player',$player->playerImage)}}" alt=""></td> -->
-                    <td><img width="100" src="{{url($player->playerImage)}}" alt=""></td>
+                    <td><img width="100" src="{{url('images/player',$player->playerImage)}}" alt=""></td>
+
                     <td>
                         <a href="{{route('add.player',$player->id)}}" class="btn btn-primary">Recruit</a>
 

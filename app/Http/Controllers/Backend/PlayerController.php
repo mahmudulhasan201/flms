@@ -27,6 +27,8 @@ class PlayerController extends Controller
         //Validation
         $checkValidation = Validator::make($request->all(), [
             'player_name' => 'required',
+            'player_email' => 'required',
+            'player_password' => 'required',
             'born' => 'required',
             'birth_place' => 'required',
             'height' => 'required',
@@ -50,6 +52,8 @@ class PlayerController extends Controller
         //Store Data
         Player::create([
             'fullName' => $request->player_name,
+            'email' => $request->player_email,
+            'password' => $request->player_password,
             'born' => $request->born,
             'birthPlace' => $request->birth_place,
             'height' => $request->height,
@@ -77,6 +81,8 @@ class PlayerController extends Controller
 
         $checkValidation = Validator::make($request->all(), [
             'player_name' => 'required',
+            'player_email' => 'required',
+            'player_password' => 'required',
             'born' => 'required',
             'birth_place' => 'required',
             'height' => 'required',
@@ -98,6 +104,8 @@ class PlayerController extends Controller
         }
         $player->update([
             'fullName' => $request->player_name,
+            'email' => $request->player_email,
+            'password' => $request->player_password,
             'born' => $request->born,
             'birthPlace' => $request->birth_place,
             'height' => $request->height,

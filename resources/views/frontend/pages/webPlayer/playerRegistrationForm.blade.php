@@ -37,8 +37,9 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="Height" class="form-label">Height (m)</label>
-                    <input type="number" name="height" class="form-control" id="" placeholder="">
+                    <label for="height" class="form-label">Height (m)</label>
+                    <input type="number" name="height" class="form-control" id="height" 
+                    placeholder="Enter your height in meters" min="0.5" max="3" step="0.01" required>
                 </div>
 
                 <div class="mb-3">
@@ -57,7 +58,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="Photo" class="form-label">Photo</label>
+                    <label for="Photo" class="form-label">Player Image</label>
                     <input type="file" name="photo" class="form-control" id="" placeholder="">
                 </div>
 
