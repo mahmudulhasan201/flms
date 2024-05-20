@@ -23,7 +23,7 @@ class FixtureController extends Controller
     $makeFixture=League::all();
     $teamFixture=Team::all();
     $venueFixture=Venue::all();
-    return view('backend.pages.fixture.fixtureForm',compact('makeFixture','venueFixture','teamFixture'));
+    return view('backend.pages.fixture.fixtureForm',compact('makeFixture','venueFixture','teamFixture'));  
    }
 
    public function submitFixtureForm(Request $request){

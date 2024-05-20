@@ -15,9 +15,9 @@ use App\Http\Controllers\Backend\TeamPlayerController;
 use App\Http\Controllers\Backend\FixtureController;
 use App\Http\Controllers\Backend\VanueController;
 use App\Http\Controllers\Backend\CategoryController;
-use App\Http\Controllers\Backend\ParticipantsController;
 use App\Http\Controllers\Backend\TeamLeagueController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\PointTableController;
 
 // Frontend
 Route::get('/', [WebpageController::class, 'homepage'])->name('homepage');
@@ -145,8 +145,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/venue/view/{venue_id}', [VanueController::class, 'venueView'])->name('venue.view');
         Route::get('/venue/delete/{venue_id}', [VanueController::class, 'venueDelete'])->name('venue.delete');
 
-        //Participants
-        Route::get('/participants', [ParticipantsController::class, 'participants'])->name('participants');
+        //Point Table
+        Route::get('/point-table/list', [PointTableController::class, 'pointTableList'])->name('pointTable.list');
+        Route::get('/point-table/form', [PointTableController::class, 'pointTableform'])->name('pointTable.form');
+        Route::post('/point-table/form', [PointTableController::class, 'submitPointTableform'])->name('pointTable.form');
+
+
+        Route::get('/point-table/form/{point_id}', [PointTableController::class, 'PointTableDelete'])->name('pointTable.delete');
 
 
         //Category
