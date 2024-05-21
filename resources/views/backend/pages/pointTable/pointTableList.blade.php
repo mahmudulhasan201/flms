@@ -37,7 +37,7 @@
       <td>{{$data->status}}</td>
       <td>
         <a href="" class="btn btn-primary">View</a>
-        <a href="" class="btn btn-success">Edit</a>
+        <a href="{{route('pointTable.edit',$data->id)}}" class="btn btn-success">Edit</a>
         <a href="{{route('pointTable.delete',$data->id)}}" class="btn btn-danger">Delete</a>  
       </td>
     </tr>

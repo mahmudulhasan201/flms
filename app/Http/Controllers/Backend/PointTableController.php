@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use App\Models\League;
 use App\Models\PointTable;
 use App\Models\Team;
@@ -53,7 +54,50 @@ class PointTableController extends Controller
     }
 
 
+    //Edit
+    public function PointTableEdit($pt_id){
+        $league = League::all();
+        $team = Team::all();
+        $editPointTable = PointTable::find($pt_id);
+        // dd($editPointTable);
+        return view('backend.pages.pointTable.pointTableEdit',compact('editPointTable','league','team'));
+    }
 
+    public function PointTableUpdate(Request $request, $ptu_id){
+
+        $updatePointTable= PointTable::find($ptu_id);
+
+        $checkValidation=Validator::make($request->all(),[
+
+            'match'=>'required',
+            'win'=>'required',
+            'lose'=>'required',
+            'points'=>'required',
+            'status'=>'required',
+          ]);
+          if($checkValidation->fails()){
+            notify()->error($checkValidation->getMessageBag());
+            return redirect()->back();
+          }
+
+          $lose = ($request->match - $request->win);
+
+          $updatePointTable->update([
+
+            'match'=>$request->match,
+            'win'=>$request->win,
+            'lose'=>$lose,
+            'points'=>$request->win * 2,
+            'status'=>$request->status,
+        ]);
+        notify()->success('Create Successful'); 
+        return redirect()->route('pointTable.list');
+    }
+
+
+
+
+    //Delete
     public function PointTableDelete($pt_id){
         $deletePointTable=PointTable::find($pt_id);
         $deletePointTable->delete();
