@@ -32,7 +32,7 @@
 
 
       <div class="mb-3">
-        <label for="away_team_id" class="">Home Team Id</label>
+        <label for="away_team_id" class="">Away Team Id</label>
         <select name="away_team_id" class="form-control" id="">
           <option value="">{{$editFixture->awayTeam->teamName}}</option>
           @foreach($team as $data)
@@ -44,9 +44,8 @@
 
       <div class="mb-3">
         <label for="session" class="form-label">Session</label>
-        <!-- <input type="text" name="session" class="form-control" id="" placeholder=""> -->
         <select class="form-control" name="session" id="">
-          <option value="Select Session">{{$editFixture->session}}</option>
+          <option value="">{{$editFixture->session}}</option>
           <option value="Day">Day</option>
           <option value="Night">Night</option>
         </select>

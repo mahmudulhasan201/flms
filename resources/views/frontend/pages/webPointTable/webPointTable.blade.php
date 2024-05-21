@@ -6,11 +6,12 @@
     <div class="row">
         <div class="col">
         <div class="content-inner">
-                <h1>Point Table</h1>
+                <h1>Point Table</h1><br><br>
+                @foreach($groupedByLeague as $leagueName => $teams)
+                    <h2>{{ $leagueName }}</h2>
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">League Name</th>
                             <th scope="col">Team Name</th>
                             <th scope="col">M</th>
                             <th scope="col">w</th>
@@ -20,20 +21,20 @@
                     </thead>
                     <tbody>
 
-                        @foreach($varPointTable as $data)
+                        @foreach($teams as $team)
                         <tr>
-                            <td>{{$data->league->leagueName}}</td>
-                            <td>{{$data->team->teamName}}</td>
-                            <td>{{$data->match}}</td>
-                            <td>{{$data->win}}</td>
-                            <td>{{$data->lose}}</td>
-                            <td>{{$data->points}}</td>
+                            <td>{{$team->team->teamName}}</td>
+                            <td>{{$team->match}}</td>
+                            <td>{{$team->win}}</td>
+                            <td>{{$team->lose}}</td>
+                            <td>{{$team->points}}</td>
                         </tr>
 
                         @endforeach
 
                     </tbody>
                 </table>
+                @endforeach
             </div>
         </div>
     </div>

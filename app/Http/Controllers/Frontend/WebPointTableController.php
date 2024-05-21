@@ -9,7 +9,13 @@ use Illuminate\Http\Request;
 class WebPointTableController extends Controller
 {
     public function webPointTable(){
-        $varPointTable=PointTable::all();
-        return view('frontend.pages.webPointTable.webPointTable',compact('varPointTable'));
+    $varPointTable = PointTable::with(['league', 'team'])->get();
+    
+    // Sort the data by points in descending order
+    $varPointTable = $varPointTable->sortByDesc('points');
+
+    $groupedByLeague = $varPointTable->groupBy('league.leagueName');
+    
+    return view('frontend.pages.webPointTable.webPointTable', compact('groupedByLeague'));
     }
 }
