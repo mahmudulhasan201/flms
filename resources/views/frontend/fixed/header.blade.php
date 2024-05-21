@@ -5,7 +5,7 @@
                 <a href="index.html">
                     <!-- <img src="https://preview.colorlib.com/theme/soccer/images/logo.png.webp" alt="Logo"> -->
 
-                    <h1 style="font-family:Fantasy">SCORRER</h1>
+                    <h1 style="font-family:Fantasy">CRICKET</h1>
                 </a>
             </div>
             <div class="ml-auto">

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\League;
 use App\Models\Player;
+use App\Models\TeamLeague;
 use App\Models\TeamPlayer;
 
 class MyTeamController extends Controller
@@ -13,6 +15,7 @@ class MyTeamController extends Controller
     {
         return view();
     }
+
 
     public function addPlayerToTeam($id)
     {
@@ -33,16 +36,14 @@ class MyTeamController extends Controller
             return redirect()->back();
         }
 
-        TeamPlayer::create
-        ([
+        TeamPlayer::create([
             'team_id' => auth('teamGuard')->user()->id,
             'player_id' => $id,
             // 'status update
         ]);
-        
-        $playerStatus=Player::find($id);
-        $playerStatus->update
-        ([
+
+        $playerStatus = Player::find($id);
+        $playerStatus->update([
             'status' => 'inactive'
         ]);
 

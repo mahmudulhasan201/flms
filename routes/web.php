@@ -29,9 +29,9 @@ Route::get('/team-list', [WebpageController::class, 'teamList'])->name('view.tea
 
 Route::get('League/player/list', [WebpageController::class, 'playerList'])->name('league.player.list');
 
-Route::get('/fixture',[WebFixtureController::class,'webFixture'])->name('web.fixture');
+Route::get('/fixture', [WebFixtureController::class, 'webFixture'])->name('web.fixture');
 
-Route::get('/point-table',[WebPointTableController::class,'webPointTable'])->name('web.pointTable');
+Route::get('/point-table', [WebPointTableController::class, 'webPointTable'])->name('web.pointTable');
 
 Route::get('/team-registration', [webpageController::class, 'registrationForm'])->name('registrationForm');
 Route::post('/do-registration', [webpageController::class, 'doRegistration'])->name('do.registration');

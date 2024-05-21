@@ -3,6 +3,7 @@
 @section('content')
 <div class="hero overlay" style="background-image: url('images/others/background image.webp');">
 	<div class="content-inner" style="margin-bottom: 365px; padding:183px">
+		@if($matches)
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
@@ -62,6 +63,7 @@
 			</div>
 
 		</div>
+		@endif
 	</div>
 
 
