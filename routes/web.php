@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\WebpageController;
 use App\Http\Controllers\Frontend\MyTeamController;
 use App\Http\Controllers\Frontend\WebPlayerController;
+use App\Http\Controllers\Frontend\WebFixtureController;
+use App\Http\Controllers\Frontend\WebPointTableController;
 
 //backend
 use App\Http\Controllers\HomeController;
@@ -23,9 +25,13 @@ use App\Http\Controllers\PointTableController;
 Route::get('/', [WebpageController::class, 'homepage'])->name('homepage');
 
 Route::get('/league', [WebpageController::class, 'league'])->name('league');
-Route::get('/team-list', [WebpageController::class, 'teamList'])->name('view.leagueList');
+Route::get('/team-list', [WebpageController::class, 'teamList'])->name('view.teamList');
 
 Route::get('League/player/list', [WebpageController::class, 'playerList'])->name('league.player.list');
+
+Route::get('/fixture',[WebFixtureController::class,'webFixture'])->name('web.fixture');
+
+Route::get('/point-table',[WebPointTableController::class,'webPointTable'])->name('web.pointTable');
 
 Route::get('/team-registration', [webpageController::class, 'registrationForm'])->name('registrationForm');
 Route::post('/do-registration', [webpageController::class, 'doRegistration'])->name('do.registration');
@@ -46,7 +52,7 @@ Route::group(['middleware' => 'authTeam'], function () {
     Route::get('/LeagueJoin/{league_id}', [WebpageController::class, 'joinLeague'])->name('league.join');
 
     Route::get('/my-team', [webpageController::class, 'myTeam'])->name('myTeam');
-    Route::get('/add/player/{id}',[MyTeamController::class, 'addPlayerToTeam'])->name('add.player');
+    Route::get('/add/player/{id}', [MyTeamController::class, 'addPlayerToTeam'])->name('add.player');
     Route::get('/team-logout', [webpageController::class, 'teamLogout'])->name('team.logout');
 });
 
@@ -108,9 +114,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/player/delete/{player_id}', [PlayerController::class, 'playerDelete'])->name('player.delete');
 
         //TeamLeague
-        Route::get('/team/league/list',[TeamLeagueController::class,'teamLeagueList'])->name('teamLeague.list');
-        Route::get('/team/league/form',[TeamLeagueController::class,'teamLeagueForm'])->name('teamLeague.form');
-        Route::post('/team/league/form',[TeamLeagueController::class,'viewTeamLeagueForm'])->name('teamLeague.form');
+        Route::get('/team/league/list', [TeamLeagueController::class, 'teamLeagueList'])->name('teamLeague.list');
+        Route::get('/team/league/form', [TeamLeagueController::class, 'teamLeagueForm'])->name('teamLeague.form');
+        Route::post('/team/league/form', [TeamLeagueController::class, 'viewTeamLeagueForm'])->name('teamLeague.form');
 
         Route::get('/team/league/delete/{id}', [TeamLeagueController::class, 'teamLeagueDelete'])->name('team.league.delete');
 
@@ -150,9 +156,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/point-table/form', [PointTableController::class, 'pointTableform'])->name('pointTable.form');
         Route::post('/point-table/form', [PointTableController::class, 'submitPointTableform'])->name('pointTable.form');
 
-
         Route::get('/point-table/form/{point_id}', [PointTableController::class, 'PointTableDelete'])->name('pointTable.delete');
-
 
         //Category
         Route::get('/category/list', [CategoryController::class, 'list'])->name('category.list');

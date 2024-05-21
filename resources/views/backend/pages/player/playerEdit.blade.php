@@ -47,6 +47,14 @@
     <img width="100" src="{{url('images/player',$player->playerImage)}}" alt="">
     <input type="file" name="photo" class="form-control" id="" placeholder="">
   </div>
+
+  <div class="mb-3">
+    <label for="status" class="form-label">Status</label>
+    <select class="form-control" name="status" id="">
+    <option value="Active">Active</option>
+    <option value="Inactive">Inactive</option>
+    </select>
+  </div>
  
 
   <button type="submit" class="btn btn-primary">Update</button>

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('battingStyle');
             $table->string('bowlingStyle');
             $table->string('playerImage')->nullable();
-            $table->string('status')->default('active');           
+            $table->string('status')->default('Active');           
             $table->timestamps();
         });
     }

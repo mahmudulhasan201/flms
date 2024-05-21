@@ -4,6 +4,7 @@
             <div class="site-logo">
                 <a href="index.html">
                     <!-- <img src="https://preview.colorlib.com/theme/soccer/images/logo.png.webp" alt="Logo"> -->
+
                     <h1 style="font-family:Fantasy">SCORRER</h1>
                 </a>
             </div>
@@ -14,16 +15,15 @@
 
                         <li><a href="{{route('league')}}" class="nav-link">League</a></li>
 
-                        <li><a href="{{route('view.leagueList')}}" class="nav-link">Team List</a></li>
+                        <li><a href="{{route('view.teamList')}}" class="nav-link">Team List</a></li>
 
                         <li><a href="{{route('league.player.list')}}" class="nav-link">Players</a></li>
 
-                        <li><a href="" class="nav-link">Fixture</a></li>
+                        <li><a href="{{route('web.fixture')}}" class="nav-link">Fixture</a></li>
 
-                        <li><a href="" class="nav-link">Point Table</a></li>
+                        <li><a href="{{route('web.pointTable')}}" class="nav-link">Point Table</a></li>
 
                         @guest('teamGuard')
-
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="" data-toggle="dropdown">Registration</a>
                             <!-- Dropdown list -->
@@ -33,7 +33,6 @@
                             </ul>
                         </li>
                         <li><a href="{{route('team.loginForm')}}" class="nav-link">Login</a></li>
-
                         @endguest
 
                         @auth('teamGuard')

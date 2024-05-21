@@ -28,7 +28,7 @@ class WebpageController extends Controller
         return view('frontend.pages.league.leagueForm', compact('data'));
     }
 
-    //View League List
+    //View League's Team List
     public function teamList()
     {
         $varTeamList = TeamLeague::all();

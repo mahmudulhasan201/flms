@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('numberOfTeams');
             $table->string('season_id');
             $table->string('leagueLogo')->nullable();
-            $table->string('status');
+            $table->string('status')->default('Active');
             $table->timestamps();
         }); 
     }
