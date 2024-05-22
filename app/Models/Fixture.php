@@ -1,32 +1,36 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Fixture extends Model
 {
     use HasFactory;
-    protected $guarded=[]; 
+    protected $guarded = [];
 
 
-    public function league(){
+    public function league()
+    {
         return $this->belongsTo(League::class, 'leagueId');
     }
 
-    public function homeTeam(){
-        return $this->belongsTo(Team::class,'homeTeamId');
+    public function homeTeam()
+    {
+        return $this->belongsTo(Team::class, 'homeTeamId');
     }
 
-    public function awayTeam(){
-        return $this->belongsTo(Team::class,'awayTeamId');
+    public function awayTeam()
+    {
+        return $this->belongsTo(Team::class, 'awayTeamId');
     }
 
-    public function venue(){
+    // public function teamLeague(){
+    //     return $this->belongsTo(TeamLeague::class, '');
+    // }
+    public function venue()
+    {
         return $this->belongsTo(Venue::class);
     }
-
- 
 }
-
-

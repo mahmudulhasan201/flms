@@ -7,7 +7,6 @@
         <div class="col">
             <div class="content-inner">
 
-                <!-- Form for selecting league -->
                 <form method="GET" action="{{ route('view.teamList') }}">
                     <div class="form-group">
                         <label for="league">Select League</label>
