@@ -36,10 +36,22 @@ class WebpageController extends Controller
     }
 
     //View League's Team List
-    public function teamList()
+    public function teamList(Request $request)
     {
-        $varTeamList = TeamLeague::all();
-        return view('frontend.pages.league.teamListForm', compact('varTeamList'));
+        $leagues = League::all(); // Fetch all leagues
+        $selectedLeague = $request->input('league_id'); // Get the selected league ID from the request
+
+        // Fetch teams based on the selected league
+        if ($selectedLeague) {
+            $teams = TeamLeague::with('team')->where('league_id', $selectedLeague)->get();
+            $league = League::find($selectedLeague);
+        } else {
+            $teams = [];
+            $league = null;
+        }
+        // dd($teams);
+
+        return view('frontend.pages.league.teamListForm', compact('leagues', 'teams', 'league', 'selectedLeague'));
     }
     //Join Button
     public function joinLeague($leagueId)

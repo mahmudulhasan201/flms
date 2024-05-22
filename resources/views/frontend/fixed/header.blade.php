@@ -2,10 +2,10 @@
     <div class="container">
         <div class="d-flex align-items-center">
             <div class="site-logo">
-
-                <a href="">
-                    <h1 style="font-family:Fantasy">SCORRER</h1>
+                <a href="index.html">
                     <!-- <img src="https://preview.colorlib.com/theme/soccer/images/logo.png.webp" alt="Logo"> -->
+
+                    <h1 style="font-family:Fantasy">CRICKET</h1>
                 </a>
             </div>
             <div class="ml-auto">
