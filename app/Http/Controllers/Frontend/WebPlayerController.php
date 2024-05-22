@@ -18,7 +18,7 @@ class WebPlayerController extends Controller
         Player::create([
             'fullName' => $request->player_name,
             'email' => $request->player_email,
-            'password' =>bcrypt( $request->player_password),
+            'password' => bcrypt($request->player_password),
             'born' => $request->born,
             'birthPlace' => $request->birth_place,
             'height' => $request->height,
@@ -36,5 +36,29 @@ class WebPlayerController extends Controller
     public function playerLoginForm()
     {
         return view('frontend.pages.webPlayer.playerLoginForm');
+    }
+
+    public function doPlayerLogin(Request $request)
+    {
+        // dd($request->all());
+        $loginInfo = ['email' => $request->email_address, 'password' => $request->password];
+        $checkLogin = auth()->guard('playerGuard')->attempt($loginInfo);
+        //dd($checkLogin);
+        if ($checkLogin) {
+            auth()->guard('teamGuard')->user();
+
+            notify()->success("Login Succcessful");
+            return redirect()->route('league');
+        }
+
+        notify()->error("invalid email or password");
+        return redirect()->back();
+    }
+
+
+    public function playerLogout()
+    {
+        auth()->guard('playerGuard')->logout();
+        return redirect()->route('homepage');
     }
 }

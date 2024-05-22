@@ -41,9 +41,9 @@ return [
             'provider' => 'users',
         ],
 
-        'customerGuard' => [
+        'playerGuard' => [
             'driver' => 'session',
-            'provider' => 'customerProvider',
+            'provider' => 'playerProvider',
         ],
         'teamGuard' => [
             'driver' => 'session',
@@ -78,10 +78,11 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        'customerProvider' => [
+        'playerProvider' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Customer::class,
+            'model' => App\Models\Player::class,
         ],
+
         'teamProvider' => [
             'driver' => 'eloquent',
             'model' => App\Models\Team::class,

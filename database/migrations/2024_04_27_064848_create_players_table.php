@@ -18,12 +18,12 @@ return new class extends Migration
             $table->string('password');
             $table->date('born');
             $table->longText('birthPlace');
-            $table->integer('height');
+            $table->float('height');
             $table->string('playingRole');
             $table->string('battingStyle');
             $table->string('bowlingStyle');
             $table->string('playerImage')->nullable();
-            $table->string('status')->default('Active');           
+            $table->string('status')->default('Active');
             $table->timestamps();
         });
     }
