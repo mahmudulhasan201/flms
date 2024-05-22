@@ -35,18 +35,10 @@ Route::get('/point-table', [WebPointTableController::class, 'webPointTable'])->n
 
 Route::get('/team-registration', [webpageController::class, 'registrationForm'])->name('registrationForm');
 Route::post('/do-registration', [webpageController::class, 'doRegistration'])->name('do.registration');
-Route::get('/login', [webpageController::class, 'loginForm'])->name('team.loginForm');
+Route::get('/team/login', [webpageController::class, 'loginForm'])->name('team.loginForm');
 Route::post('/do-login', [webpageController::class, 'doLogin'])->name('team.login');
 
-//Web Player Registration & Login
-Route::get('/player-registration', [WebPlayerController::class, 'playerRegistrationForm'])->name('player.registrationForm');
-Route::post('/do-player-registration', [WebPlayerController::class, 'doPlayerRegistration'])->name('doPlayer.Registration');
-Route::get('/player-login', [WebPlayerController::class, 'playerLoginForm'])->name('player.login');
-Route::post('/do-player-login', [WebPlayerController::class, 'doPlayerLogin'])->name('player.login');
-
-
-
-//auth
+//team-auth
 Route::group(['middleware' => 'authTeam'], function () {
 
     Route::get('/LeagueJoin/{league_id}', [WebpageController::class, 'joinLeague'])->name('league.join');
@@ -55,6 +47,19 @@ Route::group(['middleware' => 'authTeam'], function () {
     Route::get('/add/player/{id}', [MyTeamController::class, 'addPlayerToTeam'])->name('add.player');
     Route::get('/team-logout', [webpageController::class, 'teamLogout'])->name('team.logout');
 });
+
+//Web Player Registration & Login
+Route::get('/player-registration', [WebPlayerController::class, 'playerRegistrationForm'])->name('player.registrationForm');
+Route::post('/do-player-registration', [WebPlayerController::class, 'doPlayerRegistration'])->name('doPlayer.Registration');
+Route::get('/player/login', [WebPlayerController::class, 'playerLoginForm'])->name('player.login.form');
+Route::post('/do-player-login', [WebPlayerController::class, 'doPlayerLogin'])->name('player.login');
+
+Route::get('/player/profile', [WebPlayerController::class, 'playerProfile'])->name('player.profile');
+//player-auth
+Route::group(['middleware' => 'authPlayer'], function () {
+    Route::get('/player-logout', [WebPlayerController::class, 'playerLogout'])->name('player.logout');
+});
+
 
 // Backend
 Route::group(['prefix' => 'admin'], function () {

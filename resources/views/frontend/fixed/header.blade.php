@@ -23,22 +23,40 @@
 
                         <li><a href="{{route('web.pointTable')}}" class="nav-link">Point Table</a></li>
 
-                        @guest('teamGuard')
+                        @php
+                        $isTeamGuard = Auth::guard('teamGuard')->guest();
+                        $isPlayerGuard = Auth::guard('playerGuard')->guest();
+                        @endphp
+
+                        @if($isTeamGuard && $isPlayerGuard)
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="" data-toggle="dropdown">Registration</a>
                             <!-- Dropdown list -->
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{route('registrationForm')}}">Registration as Owner</a></li>
+                                <li><a class="dropdown-item" href="{{route('registrationForm')}}">Registration as Team</a></li>
                                 <li><a class="dropdown-item" href="{{route('player.registrationForm')}}">Registration as Player</a></li>
                             </ul>
                         </li>
-                        <li><a href="{{route('team.loginForm')}}" class="nav-link">Login</a></li>
-                        @endguest
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="" data-toggle="dropdown">Login</a>
+                            <!-- Dropdown list -->
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{route('team.loginForm')}}">Login as Team</a></li>
+                                <li><a class="dropdown-item" href="{{route('player.login.form')}}">Login as Player</a></li>
+                            </ul>
+                        </li>
+                        @endif
 
                         @auth('teamGuard')
                         <li><a href="{{route('myTeam')}}" class="nav-link">My Team</a></li>
                         <li>{{auth('teamGuard')->user()->ownerName}}</li>
                         <li><a href="{{route('team.logout')}}" class="nav-link">Logout</a></li>
+                        @endauth
+
+                        @auth('playerGuard')
+                        <li><a href="{{route('player.profile')}}" class="nav-link">Profile</a></li>
+                        <li>{{auth('playerGuard')->user()->fullName}}</li>
+                        <li><a href="{{route('player.logout')}}" class="nav-link">Logout</a></li>
                         @endauth
 
                     </ul>
