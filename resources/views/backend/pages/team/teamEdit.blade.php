@@ -35,8 +35,10 @@
       <div class="mb-3">
         <label for="status" class="form-label">Status</label>
         <select class="form-control" name="status" id="">
-          <option value="Active">Active</option>
-          <option value="Inactive">Inactive</option>
+          <option value="{{ $editTeam->status }}">{{ $editTeam->status }}</option>
+          <option value="Pending">Pending</option>
+          <option value="Approved">Approved</option>
+          <option value="Disqualified">Disqualified</option>
         </select>
       </div>
 

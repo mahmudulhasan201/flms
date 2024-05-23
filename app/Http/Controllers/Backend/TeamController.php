@@ -60,7 +60,7 @@ class TeamController extends Controller
             'ownerName' => $request->Oname,
             'ownerEmail' => strtolower($request->Oemail),  //strtolower=String To lower
             'password' => bcrypt($request->ownerpassword),
-            'status'=>$request->status,
+            'status' => $request->status,
 
         ]);
         notify()->success('create succesful');
@@ -103,6 +103,7 @@ class TeamController extends Controller
             'coachName' => $request->cname,
             'ownerName' => $request->Oname,
             'ownerEmail' => strtolower($request->Oemail),  //strtolower means String To lower
+            'status' => $request->status,
         ]);
         notify()->success('Update succesful');
         return redirect()->route('team.list');

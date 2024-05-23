@@ -126,15 +126,16 @@ class WebpageController extends Controller
         //dd($checkLogin);
         if ($checkLogin) {
             $team = auth()->guard('teamGuard')->user();
-            // if ($team->is_approved) {
+            // dd($team->status);
+            if ($team->status == 'Approved') {
 
-            notify()->success("Login Succcessful");
-            return redirect()->route('league');
-            // } else {
-            //     auth()->guard('teamGuard')->logout();
-            //     notify()->error("Team not yet approved.");
-            //     return redirect()->route('homepage');
-            // }
+                notify()->success("Login Succcessful");
+                return redirect()->route('league');
+            } else {
+                auth()->guard('teamGuard')->logout();
+                notify()->error("Team not yet approved. Admin approval needed");
+                return redirect()->back();
+            }
         }
 
         notify()->error("invalid email or password");
