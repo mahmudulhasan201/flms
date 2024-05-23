@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Invitation;
 use App\Models\Player;
+use App\Models\TeamPlayer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
@@ -35,7 +37,8 @@ class WebPlayerController extends Controller
 
 
     //Web Player Login
-    public function playerLoginForm(){
+    public function playerLoginForm()
+    {
         return view('frontend.pages.webPlayer.playerLoginForm');
     }
 
@@ -57,28 +60,83 @@ class WebPlayerController extends Controller
     }
 
     //Web Player Logout
-    public function playerLogout(){
+    public function playerLogout()
+    {
         auth()->guard('playerGuard')->logout();
         return redirect()->route('homepage');
     }
 
+    public function viewInvitation()
+    {
+        $invitations = Invitation::where('player_id', auth('playerGuard')->user()->id)->where('status', '!=', 'Rejected')->get();
+
+        return view('frontend.pages.player.invitation', compact('invitations'));
+    }
+
+    public function acceptInvite($team_id)
+    {
+        $player_id = auth('playerGuard')->user()->id;
+        $invite = Invitation::where('team_id', $team_id)->where('player_id', $player_id)->first();
+        // dd($invite);
+        $existingAcceptance = TeamPlayer::where('player_id', $player_id)->first();
+
+        if ($existingAcceptance) {
+            notify()->error('You have already accepted a team request.');
+            return redirect()->back();
+        }
+
+        TeamPlayer::create([
+            'team_id' => $team_id,
+            'player_id' => $player_id,
+            // 'status update
+        ]);
+
+        $invite->update([
+            'status' => 'Accepted'
+        ]);
+
+        $playerStatus = Player::find($player_id);
+        $playerStatus->update([
+            'status' => 'inTeam'
+        ]);
+        notify()->success('you accepted team request ');
+        return redirect()->back();
+    }
+
+    public function rejectInvite($team_id)
+    {
+        $player_id = auth('playerGuard')->user()->id;
+        $invite = Invitation::where('team_id', $team_id)->where('player_id', $player_id)->first();
+
+        $invite->update([
+            'status' => 'Rejected'
+        ]);
+
+        notify()->success('you rejected team request successfully');
+
+        return redirect()->back();
+    }
+
 
     //web Player Profile
-    public function showPlayerProfile(){
+    public function showPlayerProfile()
+    {
         $player = Player::find(auth('playerGuard')->user()->id);
         // dd($player);
-        return view('frontend.pages.webPlayer.playerProfile',compact('player'));
+        return view('frontend.pages.webPlayer.playerProfile', compact('player'));
     }
 
 
     //Edit Player Profile
-    public function editPlayerProfile($id){
-        $player=Player::find($id);
-        return view('frontend.pages.webPlayer.playerProfileEdit',compact('player'));
+    public function editPlayerProfile($id)
+    {
+        $player = Player::find($id);
+        return view('frontend.pages.webPlayer.playerProfileEdit', compact('player'));
     }
 
-    public function updatePlayerProfile(Request $request,$id){
-        $player=Player::find($id);
+    public function updatePlayerProfile(Request $request, $id)
+    {
+        $player = Player::find($id);
 
         $checkValidation = Validator::make($request->all(), [
             'player_name' => 'required',

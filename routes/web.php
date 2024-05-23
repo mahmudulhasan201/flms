@@ -43,7 +43,9 @@ Route::group(['middleware' => 'authTeam'], function () {
 
     Route::get('/LeagueJoin/{league_id}', [WebpageController::class, 'joinLeague'])->name('league.join');
 
-    Route::get('/my-team', [webpageController::class, 'myTeam'])->name('myTeam');
+    Route::get('/team/profile', [MyTeamController::class, 'teamProfile'])->name('team.profile');
+    Route::get('/team/my-team', [webpageController::class, 'myTeam'])->name('myTeam');
+    Route::get('/team/invitations', [MyTeamController::class, 'viewInvitation'])->name('team.invitation');
     Route::get('/add/player/{id}', [MyTeamController::class, 'addPlayerToTeam'])->name('add.player');
     Route::get('/team-logout', [webpageController::class, 'teamLogout'])->name('team.logout');
 });
@@ -54,12 +56,17 @@ Route::post('/do-player-registration', [WebPlayerController::class, 'doPlayerReg
 Route::get('/player/login', [WebPlayerController::class, 'playerLoginForm'])->name('player.login.form');
 Route::post('/do-player-login', [WebPlayerController::class, 'doPlayerLogin'])->name('player.login');
 
-Route::get('/player/profile', [WebPlayerController::class, 'showPlayerProfile'])->name('player.profile');
-Route::get('/player/profile/edit{id}',[WebPlayerController::class, 'editPlayerProfile'])->name('editPlayer.profile');
-Route::put('/player/profile/update{id}',[WebPlayerController::class, 'updatePlayerProfile'])->name('updatePlayer.profile');
-
 //player-auth
 Route::group(['middleware' => 'authPlayer'], function () {
+
+    Route::get('/player/profile', [WebPlayerController::class, 'showPlayerProfile'])->name('player.profile');
+    Route::get('/player/profile/edit{id}', [WebPlayerController::class, 'editPlayerProfile'])->name('editPlayer.profile');
+    Route::put('/player/profile/update{id}', [WebPlayerController::class, 'updatePlayerProfile'])->name('updatePlayer.profile');
+
+    Route::get('/player/invitations', [WebPlayerController::class, 'viewInvitation'])->name('player.invitation');
+    Route::get('/player/accept/{id}', [WebPlayerController::class, 'acceptInvite'])->name('player.accept');
+    Route::get('/player/reject/{id}', [WebPlayerController::class, 'rejectInvite'])->name('player.reject');
+
     Route::get('/player-logout', [WebPlayerController::class, 'playerLogout'])->name('player.logout');
 });
 

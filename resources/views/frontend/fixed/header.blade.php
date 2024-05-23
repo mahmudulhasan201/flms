@@ -49,21 +49,20 @@
                         @endif
 
                         @auth('teamGuard')
-                        <li><a href="{{route('myTeam')}}" class="nav-link">My Team</a></li>
+                        <li><a href="{{route('team.profile')}}" class="nav-link">Team Profile</a></li>
                         <li>{{auth('teamGuard')->user()->ownerName}}</li>
                         <li><a href="{{route('team.logout')}}" class="nav-link">Logout</a></li>
                         @endauth
 
                         @auth('playerGuard')
-                        <li><a href="{{route('player.profile')}}" 
-                        class="nav-link">{{auth('playerGuard')->user()->fullName}}</a></li>
+                        <li><a href="{{route('player.profile')}}" class="nav-link">{{auth('playerGuard')->user()->fullName}}</a></li>
                         <li><a href="{{route('player.logout')}}" class="nav-link">Logout</a></li>
                         @endauth
-                        
+
                     </ul>
 
                 </nav>
-    
+
                 <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white">
                     <span class="icon-menu h3 text-white"></span></a>
             </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Invitation;
 use App\Models\League;
 use App\Models\Player;
 use App\Models\TeamLeague;
@@ -11,11 +12,18 @@ use App\Models\TeamPlayer;
 
 class MyTeamController extends Controller
 {
-    public function viewTeam()
+
+    public function teamProfile()
     {
-        return view();
+        return view('frontend.pages.team.teamProfile');
     }
 
+    public function viewInvitation()
+    {
+        $invitations = Invitation::where('team_id', auth('teamGuard')->user()->id)->get();
+        // dd($invitations->all());
+        return view('frontend.pages.team.invitation', compact('invitations'));
+    }
 
     public function addPlayerToTeam($id)
     {
@@ -36,18 +44,34 @@ class MyTeamController extends Controller
             return redirect()->back();
         }
 
-        TeamPlayer::create([
-            'team_id' => auth('teamGuard')->user()->id,
-            'player_id' => $id,
-            // 'status update
-        ]);
+        //send player request
+        $duplicate = Invitation::where('team_id', $teamId)->where('player_id', $id)->first();
+        // dd($duplicate);
+        if (!$duplicate) {
+            Invitation::create([
+                'team_id' => $teamId,
+                'player_id' => $id,
+            ]);
 
-        $playerStatus = Player::find($id);
-        $playerStatus->update([
-            'status' => 'inactive'
-        ]);
 
-        notify()->success('Player is now in your Team');
-        return redirect()->route('league.player.list');
+
+            // TeamPlayer::create([
+            //     'team_id' => auth('teamGuard')->user()->id,
+            //     'player_id' => $id,
+            //     // 'status update
+            // ]);
+
+            // $playerStatus = Player::find($id);
+            // $playerStatus->update([
+            //     'status' => 'inactive'
+            // ]);
+
+            // notify()->success('Player is now in your Team');
+            notify()->success('Request has been sent to the Player');
+            return redirect()->route('league.player.list');
+        } else {
+            notify()->error('This player already has been invited');
+            return redirect()->route('league.player.list');
+        }
     }
 }

@@ -80,6 +80,10 @@ body {
       border-color: #fff;
       background: transparent;
       color: #fff; }
+    .btn.btn-secondary:hover {
+      border-color:#f6d743;
+      background:#28c930;
+      color: #ffffff; }
   
   .form-control {
     height: 43px;

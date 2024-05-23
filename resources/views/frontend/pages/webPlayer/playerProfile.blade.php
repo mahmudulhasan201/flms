@@ -17,7 +17,7 @@
             <p>Height: {{ $player->height }}</p>
             <p>Playing Role: {{ $player->playingRole }}</p>
             <p>Batting Style: {{ $player->battingStyle }}</p>
-            <p>Bowling Style: {{ $player->bowlingStyle }}</p>    
+            <p>Bowling Style: {{ $player->bowlingStyle }}</p>
             <img src="{{url('images/player/',$player->playerImage) }}" alt="{{ $player->fullName }}"><br>
 
             <td><a href="{{route('editPlayer.profile', $player->id)}}" class="btn btn-primary">Edit Profile</a></td>
@@ -26,6 +26,8 @@
 
 
         <div class="col-md-4">
+            <a class="btn btn-primary mb-3 w-100" href="{{route('player.invitation')}}">Invitations</a>
+
         </div>
     </div>
 </div>
