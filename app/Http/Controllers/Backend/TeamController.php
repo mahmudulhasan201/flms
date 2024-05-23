@@ -84,7 +84,6 @@ class TeamController extends Controller
             'cname' => 'required',
             'Oname' => 'required',
             'Oemail' => 'required',
-            'ownerpassword' => 'required',
         ]);
         if ($checkValidation->fails()) {
             notify()->error($checkValidation->getMessageBag());
@@ -104,7 +103,6 @@ class TeamController extends Controller
             'coachName' => $request->cname,
             'ownerName' => $request->Oname,
             'ownerEmail' => strtolower($request->Oemail),  //strtolower means String To lower
-            'password' => bcrypt($request->ownerpassword),
         ]);
         notify()->success('Update succesful');
         return redirect()->route('team.list');

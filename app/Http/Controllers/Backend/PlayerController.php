@@ -67,7 +67,7 @@ class PlayerController extends Controller
     }
 
 
-    //Edit,View,Delete
+    //Edit
 
     public function playerEdit(Request $request, $pl_id)
     {
@@ -81,8 +81,6 @@ class PlayerController extends Controller
 
         $checkValidation = Validator::make($request->all(), [
             'player_name' => 'required',
-            'player_email' => 'required',
-            'player_password' => 'required',
             'born' => 'required',
             'birth_place' => 'required',
             'height' => 'required',
@@ -104,8 +102,6 @@ class PlayerController extends Controller
         }
         $player->update([
             'fullName' => $request->player_name,
-            'email' => $request->player_email,
-            'password' => $request->player_password,
             'born' => $request->born,
             'birthPlace' => $request->birth_place,
             'height' => $request->height,
@@ -118,16 +114,15 @@ class PlayerController extends Controller
         return redirect()->route('player.list');
     }
 
-
-    public function playerView($player_id)
-    {
+    //View
+    public function playerView($player_id){
         $player = Player::find($player_id);
         return view('backend.pages.player.playerView', compact('player'));
     }
 
 
-    public function playerDelete($p_id)
-    {
+    //Delete
+    public function playerDelete($p_id){
         $player = Player::find($p_id);
         $player->delete();
 

@@ -54,17 +54,25 @@ Route::post('/do-player-registration', [WebPlayerController::class, 'doPlayerReg
 Route::get('/player/login', [WebPlayerController::class, 'playerLoginForm'])->name('player.login.form');
 Route::post('/do-player-login', [WebPlayerController::class, 'doPlayerLogin'])->name('player.login');
 
-Route::get('/player/profile', [WebPlayerController::class, 'playerProfile'])->name('player.profile');
+Route::get('/player/profile', [WebPlayerController::class, 'showPlayerProfile'])->name('player.profile');
+Route::get('/player/profile/edit{id}',[WebPlayerController::class, 'editPlayerProfile'])->name('editPlayer.profile');
+Route::put('/player/profile/update{id}',[WebPlayerController::class, 'updatePlayerProfile'])->name('updatePlayer.profile');
+
 //player-auth
 Route::group(['middleware' => 'authPlayer'], function () {
     Route::get('/player-logout', [WebPlayerController::class, 'playerLogout'])->name('player.logout');
 });
 
 
-// Backend
+
+
+
+
+
+// Backend Admin
 Route::group(['prefix' => 'admin'], function () {
 
-    // LMS login&Logout
+    // CLMS login&Logout
     Route::get('/login', [UserController::class, 'login'])->name('login');
     Route::post('/do-login', [UserController::class, 'doLogin'])->name('do.login');
     Route::group(['middleware' => 'auth'], function () {

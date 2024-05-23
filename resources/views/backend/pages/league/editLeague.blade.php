@@ -43,9 +43,12 @@
   </div>
 
   <div class="mb-3">
-    <label for="Status" class="form-label">Status</label>
-    <input value="{{$editLeague->status}}" name="status" class="form-control" id="" placeholder="status">
-  </div>
+        <label for="status" class="form-label">Status</label>
+        <select class="form-control" name="status" id="">
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+      </div>
  
 
   <button type="submit" class="btn btn-primary">Update</button>
