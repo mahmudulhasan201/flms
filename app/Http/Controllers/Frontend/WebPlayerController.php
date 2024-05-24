@@ -68,7 +68,7 @@ class WebPlayerController extends Controller
 
     public function viewInvitation()
     {
-        $invitations = Invitation::where('player_id', auth('playerGuard')->user()->id)->where('status', '!=', 'Rejected')->get();
+        $invitations = Invitation::where('player_id', auth('playerGuard')->user()->id)->where('status', 'pending')->get();
 
         return view('frontend.pages.player.invitation', compact('invitations'));
     }
