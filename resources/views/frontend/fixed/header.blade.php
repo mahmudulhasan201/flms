@@ -11,17 +11,17 @@
             <div class="ml-auto">
                 <nav class="site-navigation position-relative text-right" role="navigation">
                     <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                        <li><a href="{{route('homepage')}}" class="nav-link">Home</a></li>
+                        <li><a href="{{route('homepage')}}" class="nav-link"><strong>Home</strong></a></li>
 
-                        <li><a href="{{route('league')}}" class="nav-link">League</a></li>
+                        <li><a href="{{route('league')}}" class="nav-link"> <strong>League</strong></a></li>
 
-                        <li><a href="{{route('view.teamList')}}" class="nav-link">Team List</a></li>
+                        <li><a href="{{route('view.teamList')}}" class="nav-link"><strong>Team List</strong></a></li>
 
-                        <li><a href="{{route('league.player.list')}}" class="nav-link">Players</a></li>
+                        <li><a href="{{route('league.player.list')}}" class="nav-link"><strong>Players</strong></a></li>
 
-                        <li><a href="{{route('web.fixture')}}" class="nav-link">Fixture</a></li>
+                        <li><a href="{{route('web.fixture')}}" class="nav-link"><strong>Fixture</strong></a></li>
 
-                        <li><a href="{{route('web.pointTable')}}" class="nav-link">Point Table</a></li>
+                        <li><a href="{{route('web.pointTable')}}" class="nav-link"><strong>Point Table</strong></a></li>
 
                         @php
                         $isTeamGuard = Auth::guard('teamGuard')->guest();
@@ -30,7 +30,7 @@
 
                         @if($isTeamGuard && $isPlayerGuard)
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="" data-toggle="dropdown">Registration</a>
+                            <a class="nav-link" href="" data-toggle="dropdown"><strong>Registration</strong></a>
                             <!-- Dropdown list -->
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{route('registrationForm')}}">Registration as Team</a></li>
@@ -39,7 +39,7 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="" data-toggle="dropdown">Login</a>
+                            <a class="nav-link" href="" data-toggle="dropdown"><strong>Login</strong></a>
                             <!-- Dropdown list -->
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{route('team.loginForm')}}">Login as Team</a></li>
@@ -49,14 +49,14 @@
                         @endif
 
                         @auth('teamGuard')
-                        <li><a href="{{route('team.profile')}}" class="nav-link">Team Profile</a></li>
+                        <li><a href="{{route('team.profile')}}" class="nav-link"><strong>Team Profile</strong></a></li>
                         <li>{{auth('teamGuard')->user()->ownerName}}</li>
-                        <li><a href="{{route('team.logout')}}" class="nav-link">Logout</a></li>
+                        <li><a href="{{route('team.logout')}}" class="nav-link"><strong>Logout</strong></a></li>
                         @endauth
 
                         @auth('playerGuard')
-                        <li><a href="{{route('player.profile')}}" class="nav-link">{{auth('playerGuard')->user()->fullName}}</a></li>
-                        <li><a href="{{route('player.logout')}}" class="nav-link">Logout</a></li>
+                        <li><a href="{{route('player.profile')}}" class="nav-link"><strong>{{auth('playerGuard')->user()->fullName}}</strong></a></li>
+                        <li><a href="{{route('player.logout')}}" class="nav-link"><strong>Logout</strong></a></li>
                         @endauth
 
                     </ul>

@@ -13,6 +13,6 @@ class PlayerTableSeeder extends Seeder
      */
     public function run(): void
     {
-        Player::factory(30)->create();
+        Player::factory(60)->create();
     }
 }

@@ -7,15 +7,19 @@ use App\Http\Controllers\Controller;
 use App\Models\Invitation;
 use App\Models\League;
 use App\Models\Player;
+use App\Models\Team;
 use App\Models\TeamLeague;
 use App\Models\TeamPlayer;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class MyTeamController extends Controller
 {
 
     public function teamProfile()
     {
-        return view('frontend.pages.team.teamProfile');
+        $team = Team::find(auth('teamGuard')->user()->id);
+        return view('frontend.pages.team.teamProfile',compact('team'));
     }
 
     public function viewInvitation()
@@ -25,9 +29,23 @@ class MyTeamController extends Controller
         return view('frontend.pages.team.invitation', compact('invitations'));
     }
 
+
+    //Delete player from Team profile
+    public function deleteInvitation($id)
+    {
+        $invitation = Invitation::find($id);
+        if ($invitation) {
+            $invitation->delete();
+            notify()->success("Delete Successful.");
+        } else {
+            notify()->error("Invitation not found.");
+        }
+        return redirect()->back();
+    }
+
+
     public function addPlayerToTeam($id)
     {
-        // dd($id);
         $teamId = auth('teamGuard')->user()->id;
 
         $alreadyExist = TeamPlayer::where('player_id', $id)->where('team_id', $teamId)->first();
@@ -73,5 +91,45 @@ class MyTeamController extends Controller
             notify()->error('This player already has been invited');
             return redirect()->route('league.player.list');
         }
+    }
+
+    //Edit Team Profile
+    public function editTeamProfile($id){
+        $team=Team::find($id);
+        return view('frontend.pages.team.editTeamProfile',compact('team'));
+    }
+
+    public function updateTeamProfile(Request $request,$id){
+        $team=Team::find($id);
+
+        $checkValidation = Validator::make($request->all(), [
+            'Name' => 'required',
+            'teamlogo' => 'image',
+            'cname' => 'required',
+            'Oname' => 'required',
+            'Oemail' => 'required',
+        ]);
+        if ($checkValidation->fails()) {
+            notify()->error($checkValidation->getMessageBag());
+            return redirect()->back();
+        }
+        $fileName = '';
+        if ($request->hasFile('teamlogo')) {
+            $fileName = date('YmdHis') . '.' . $request->file('teamlogo')->getClientOriginalExtension();
+            $request->file('teamlogo')->storeAs('/team', $fileName);
+            File::delete('images/team' . $team->teamLogo);
+        }
+
+
+        $team->update([
+            'teamName' => $request->Name,
+            'teamLogo' => $fileName,
+            'coachName' => $request->cname,
+            'ownerName' => $request->Oname,
+            'ownerEmail' => strtolower($request->Oemail),  //strtolower means String To lower
+            'status' => $request->status,
+        ]);
+        notify()->success('Update succesful');
+        return redirect()->route('team.profile');
     }
 }
