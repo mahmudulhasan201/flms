@@ -44,9 +44,14 @@ Route::group(['middleware' => 'authTeam'], function () {
     Route::get('/LeagueJoin/{league_id}', [WebpageController::class, 'joinLeague'])->name('league.join');
 
     Route::get('/team/profile', [MyTeamController::class, 'teamProfile'])->name('team.profile');
+    Route::get('/team/profile/edit{id}', [MyTeamController::class, 'editTeamProfile'])->name('editTeam.profile');
+    Route::put('/team/profile/update{id}', [MyTeamController::class, 'updateTeamProfile'])->name('updateTeam.profile');
     Route::get('/team/my-team', [webpageController::class, 'myTeam'])->name('myTeam');
     Route::get('/team/invitations', [MyTeamController::class, 'viewInvitation'])->name('team.invitation');
-    Route::get('/add/player/{id}', [MyTeamController::class, 'addPlayerToTeam'])->name('add.player');
+
+    Route::get('/delete/team/invitations{id}', [MyTeamController::class, 'deleteInvitation'])->name('deleteTeam.invitation');
+    
+    Route::get('/add/player/{id}', [MyTeamController::class, 'addPlayerToTeam'])->name('add.player'); 
     Route::get('/team-logout', [webpageController::class, 'teamLogout'])->name('team.logout');
 });
 

@@ -6,14 +6,17 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <h1>Team Name</h1>
+
+                <h1>{{ $team->teamName }}</h1>
                 <div class="mt-3">
-                    <p><strong>Owner Name:</strong> John Doe</p>
-                    <p><strong>Coach Name:</strong> Jane Smith</p>
-                    <p><strong>Team Logo:</strong></p>
-                    <img src="path/to/logo.jpg" alt="Team Logo" class="img-fluid mb-3" style="max-width: 200px;">
-                    <p><strong>Status:</strong> Active</p>
-                    <a class="btn btn-primary mt-2" href="#">Edit</a>
+                    <div class="team-details">
+                        <p><strong>Coach Name:</strong> {{ $team->coachName }}</p>
+                        <p><strong>Owner Name:</strong> {{ $team->ownerName }}</p>
+                        <p><strong>Owner Email:</strong> {{ $team->ownerEmail }}</p>
+                        <img src="{{ url('images/team', $team->teamLogo) }}" alt="{{ $team->teamName }} Logo" style="width: 200px; height: 200px">
+                        <p><strong>Status:</strong> {{ $team->status }}</p>
+                    </div>
+                    <a class="btn btn-primary mt-2" href="{{route('editTeam.profile',$team->id)}}">Edit</a>
                 </div>
             </div>
             <div class="col-md-4">

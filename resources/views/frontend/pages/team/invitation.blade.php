@@ -11,7 +11,6 @@
                     <th scope="col">Serial</th>
                     <th scope="col">Team Name</th>
                     <th scope="col">Player Name</th>
-                    <!-- <th scope="col">Message</th> -->
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                 </tr>
@@ -26,7 +25,7 @@
                     <td>{{$reqs->player->fullName}}</td>
                     <td>{{$reqs->status}}</td>
                     <td>
-                        <a class="btn btn-primary" href="">Delete</a>
+                        <a class="btn btn-primary" href="{{route('deleteTeam.invitation',$reqs->id)}}">Delete</a>
                     </td>
                     @endforeach
                 </tr>

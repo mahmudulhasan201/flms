@@ -43,12 +43,6 @@
           <input name="password" type="password" class="form-control" id="" placeholder="Enter Password">
         </div>
 
-
-        <div class="form-group" style="color: white;">
-          <label for="">Status</label>
-          <input name="status" type="text" class="form-control" id="" placeholder="">
-        </div>
-
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
