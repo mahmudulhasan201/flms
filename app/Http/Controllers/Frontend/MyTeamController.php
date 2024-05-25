@@ -71,8 +71,6 @@ class MyTeamController extends Controller
                 'player_id' => $id,
             ]);
 
-
-
             // TeamPlayer::create([
             //     'team_id' => auth('teamGuard')->user()->id,
             //     'player_id' => $id,
@@ -83,8 +81,8 @@ class MyTeamController extends Controller
             // $playerStatus->update([
             //     'status' => 'inactive'
             // ]);
-
             // notify()->success('Player is now in your Team');
+
             notify()->success('Request has been sent to the Player');
             return redirect()->route('league.player.list');
         } else {
@@ -119,7 +117,6 @@ class MyTeamController extends Controller
             $request->file('teamlogo')->storeAs('/team', $fileName);
             File::delete('images/team' . $team->teamLogo);
         }
-
 
         $team->update([
             'teamName' => $request->Name,

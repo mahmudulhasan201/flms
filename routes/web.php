@@ -33,6 +33,7 @@ Route::get('/fixture', [WebFixtureController::class, 'webFixture'])->name('web.f
 
 Route::get('/point-table', [WebPointTableController::class, 'webPointTable'])->name('web.pointTable');
 
+//Team Registration & Login
 Route::get('/team-registration', [webpageController::class, 'registrationForm'])->name('registrationForm');
 Route::post('/do-registration', [webpageController::class, 'doRegistration'])->name('do.registration');
 Route::get('/team/login', [webpageController::class, 'loginForm'])->name('team.loginForm');
@@ -48,9 +49,7 @@ Route::group(['middleware' => 'authTeam'], function () {
     Route::put('/team/profile/update{id}', [MyTeamController::class, 'updateTeamProfile'])->name('updateTeam.profile');
     Route::get('/team/my-team', [webpageController::class, 'myTeam'])->name('myTeam');
     Route::get('/team/invitations', [MyTeamController::class, 'viewInvitation'])->name('team.invitation');
-
-    Route::get('/delete/team/invitations{id}', [MyTeamController::class, 'deleteInvitation'])->name('deleteTeam.invitation');
-    
+    Route::get('/delete/team/invitations{id}', [MyTeamController::class, 'deleteInvitation'])->name('deleteTeam.invitation'); 
     Route::get('/add/player/{id}', [MyTeamController::class, 'addPlayerToTeam'])->name('add.player'); 
     Route::get('/team-logout', [webpageController::class, 'teamLogout'])->name('team.logout');
 });

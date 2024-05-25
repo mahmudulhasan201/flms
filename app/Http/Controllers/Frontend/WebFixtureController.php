@@ -22,10 +22,9 @@ class WebFixtureController extends Controller
             $matches = [];
             $league = null;
         }
-        // dd($matches);
-
         return view('frontend.pages.webFixture.fixture', compact('leagues', 'matches', 'league', 'selectedLeague'));
     }
+    
 
     public function fixtureAllMatches(Request $request)
     {

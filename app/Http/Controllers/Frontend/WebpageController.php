@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\Frontend;
-
 use App\Http\Controllers\Controller;
 use App\Models\Fixture;
 use App\Models\League;
@@ -38,21 +36,22 @@ class WebpageController extends Controller
     //View League's Team List
     public function teamList(Request $request)
     {
-        $leagues = League::all(); // Fetch all leagues
+        $leagues = League::all();
         $selectedLeague = $request->input('league_id'); // Get the selected league ID from the request
 
         // Fetch teams based on the selected league
-        if ($selectedLeague) {
+        if ($selectedLeague)
+        {
             $teams = TeamLeague::with('team')->where('league_id', $selectedLeague)->get();
             $league = League::find($selectedLeague);
-        } else {
+        } else 
+        {
             $teams = [];
             $league = null;
         }
-        // dd($teams);
-
         return view('frontend.pages.league.teamListForm', compact('leagues', 'teams', 'league', 'selectedLeague'));
     }
+
     //Join Button
     public function joinLeague($leagueId)
     {
@@ -89,7 +88,7 @@ class WebpageController extends Controller
 
 
 
-    //Frontend Registration Form
+    //Team Registration Form
     public function registrationForm()
     {
         return view('frontend.pages.teamRegistration.registrationForm');
@@ -97,7 +96,6 @@ class WebpageController extends Controller
 
     public function doRegistration(Request $request)
     {
-        // dd($request->all());
         Team::create([
             'teamName' => $request->team_name,
             'teamLogo' => $request->team_logo,
@@ -112,7 +110,7 @@ class WebpageController extends Controller
     }
 
 
-    //Frontend Login
+    //Team Login
     public function loginForm()
     {
         return view('frontend.pages.team.teamLogin');
