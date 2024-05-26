@@ -103,7 +103,7 @@ class WebpageController extends Controller
             'ownerName' => $request->owner_name,
             'ownerEmail' => $request->owner_email,
             'password' => bcrypt($request->password),
-            'status' => $request->status,
+            // 'status' => $request->status,
         ]);
         notify()->success("Registration Successful");
         return redirect()->route('homepage');

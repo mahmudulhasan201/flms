@@ -1,33 +1,35 @@
 @extends('frontend.master')
 
 @section('content')
+<div style="padding-bottom:20px">
+    <div class="content-inner">
+        <h1 class="text-center">League</h1><br>
+        <div class="container">
+            @foreach($data as $league)
 
-<div class="content-inner">
-    <h1 class="text-center">League</h1><br>
-    <div class="container">
-        @foreach($data as $league)
-
-        <div class="card mb-3">
-            <div class="row">
-                <div class="col-md-4">
-                    <img style="width: 200px;" class="card-img-top"  src="{{url('images/league',$league->leagueLogo)}}" alt="Card image cap">
-                </div>
-                <div class="col-md-4">
-                    <div class="card-body">
-                        <h3 class="card-title">{{$league->leagueName}}</h3>
-                        <p class="card-text">{{$league->season->seasonName}}</p>
+            <div class="card mb-3">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img style="width: 200px;" class="card-img-top" src="{{url('images/league',$league->leagueLogo)}}" alt="Card image cap">
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <a href="{{route('league.join',$league->id)}}" class="btn btn-primary">Join</a>
-                </div>
-            </div><br>
+                    <div class="col-md-4">
+                        <div class="card-body">
+                            <h3 class="card-title">{{$league->leagueName}}</h3>
+                            <p class="card-text">{{$league->season->seasonName}}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{{route('league.join',$league->id)}}" class="btn btn-primary">Join</a>
+                    </div>
+                </div><br>
 
-            @endforeach
+                @endforeach
 
-            <br><br>
+                <br><br>
 
 
+            </div>
         </div>
     </div>
-    @endsection
+</div>
+@endsection

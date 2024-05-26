@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="hero overlay" style="background-image: url('images/others/background image.webp');">
-	<div class="content-inner" style="margin-bottom: 365px; padding:183px">
+	<div class="content-inner" style="margin-bottom: 365px; padding:208px">
 		@if($matches)
 		<div class="container">
 			<div class="row d-flex justify-content-between">
