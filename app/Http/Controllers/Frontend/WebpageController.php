@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers\Frontend;
+
 use App\Http\Controllers\Controller;
 use App\Models\Fixture;
 use App\Models\League;
@@ -40,12 +42,10 @@ class WebpageController extends Controller
         $selectedLeague = $request->input('league_id'); // Get the selected league ID from the request
 
         // Fetch teams based on the selected league
-        if ($selectedLeague)
-        {
+        if ($selectedLeague) {
             $teams = TeamLeague::with('team')->where('league_id', $selectedLeague)->get();
             $league = League::find($selectedLeague);
-        } else 
-        {
+        } else {
             $teams = [];
             $league = null;
         }
@@ -58,10 +58,16 @@ class WebpageController extends Controller
         $existingTeamLeague = TeamLeague::where('league_id', $leagueId)
             ->where('team_id', auth('teamGuard')->user()->id)
             ->exists();
+
         if ($existingTeamLeague) {
 
             // User is already in the league, no need to add again
             notify()->error('You are already in this league.');
+            return redirect()->route('homepage');
+        }
+
+        if (auth('teamGuard')->user()->status == 'Approved') {
+            notify()->error('This team is already in a different league');
             return redirect()->route('homepage');
         }
 
