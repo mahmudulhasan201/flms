@@ -61,6 +61,11 @@
     </div>
 
     <div class="mb-3">
+      <label for="price" class="form-label">Player Price</label>
+      <input type="number" name="price" class="form-control" id="" placeholder="">
+    </div>
+
+    <div class="mb-3">
     <label for="status" class="form-label">Status</label>
     <select class="form-control" name="status" id="">
     <option value="Active">Active</option>

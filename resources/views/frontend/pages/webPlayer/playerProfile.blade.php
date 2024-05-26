@@ -18,6 +18,7 @@
             <p>Playing Role: {{ $player->playingRole }}</p>
             <p>Batting Style: {{ $player->battingStyle }}</p>
             <p>Bowling Style: {{ $player->bowlingStyle }}</p>
+            <p>Price: {{ $player->price}}</p>
             <img src="{{url('images/player/',$player->playerImage) }}" alt="{{ $player->fullName }}"><br>
 
             <td><a href="{{route('editPlayer.profile', $player->id)}}" class="btn btn-primary">Edit Profile</a></td>

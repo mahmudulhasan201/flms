@@ -22,6 +22,7 @@
                     <th scope="col">Playing Role</th>
                     <th scope="col">Batting style</th>
                     <th scope="col">Bowling Style</th>
+                    <th scope="col">Asking Price</th>
                     <th scope="col">Photo</th>
                     <th scope="col">Action</th>
                 </tr>
@@ -39,6 +40,7 @@
                     <td>{{$player->playingRole}}</td>
                     <td>{{$player->battingStyle}}</td>
                     <td>{{$player->bowlingStyle}}</td>
+                    <td>{{$player->price}}</td>
                     <td><img width="100" src="{{url('images/player',$player->playerImage)}}" alt=""></td>
 
                     <td>

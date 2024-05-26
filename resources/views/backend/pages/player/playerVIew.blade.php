@@ -12,6 +12,7 @@
 <p>Playing Role: {{ $player->playingRole}}</p>
 <p>Batting Style: {{ $player->battingStyle}}</p>
 <p>Bowling Style: {{ $player->bowlingStyle}}</p>
+<p>Player Price: {{ $player->price}}</p>
 <p>Image:</p> <img width="100" src="{{url('/images/player', $player->playerImage)}}" alt="">
 
 

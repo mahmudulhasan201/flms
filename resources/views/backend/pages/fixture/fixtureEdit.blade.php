@@ -12,7 +12,7 @@
       <div class="form-group">
         <label for="">League</label>
         <select class="form-control" name="league_id">
-          <option value="">{{$editFixture->league->leagueName}}</option>
+          <option value="{{$editFixture->leagueId}}">{{$editFixture->league->leagueName}}</option>
           @foreach($league as $data)
           <option value="{{$data->id}}">{{$data->leagueName}}</option>
           @endforeach
@@ -23,7 +23,7 @@
       <div class="mb-3">
         <label for="home_team_id" class="">Home Team Id</label>
         <select name="home_team_id" class="form-control" id="">
-          <option value="">{{$editFixture->homeTeam->teamName}}</option>
+          <option value="{{$editFixture->homeTeamId}}">{{$editFixture->homeTeam->teamName}}</option>
           @foreach($team as $data)
           <option value="{{$data->id}}">{{$data->teamName}}</option>
           @endforeach
@@ -34,7 +34,7 @@
       <div class="mb-3">
         <label for="away_team_id" class="">Away Team Id</label>
         <select name="away_team_id" class="form-control" id="">
-          <option value="">{{$editFixture->awayTeam->teamName}}</option>
+          <option value="{{$editFixture->awayTeamId}}">{{$editFixture->awayTeam->teamName}}</option>
           @foreach($team as $data)
           <option value="{{$data->id}}">{{$data->teamName}}</option>
           @endforeach
@@ -45,7 +45,7 @@
       <div class="mb-3">
         <label for="session" class="form-label">Session</label>
         <select class="form-control" name="session" id="">
-          <option value="">{{$editFixture->session}}</option>
+          <option value="{{$editFixture->session}}">{{$editFixture->session}}</option>
           <option value="Day">Day</option>
           <option value="Night">Night</option>
         </select>
@@ -59,7 +59,7 @@
       <div class="mb-3">
         <label for="" class="">Venue Id</label>
         <select name="venue_id" class="form-control" id="">
-          <option value="">{{$editFixture->venue->venueName}}</option>
+          <option value="{{$editFixture->venue_id}}">{{$editFixture->venue->venueName}}</option>
           @foreach($venue as $data)
           <option value="{{$data->id}}">{{$data->venueName}}</option>
           @endforeach

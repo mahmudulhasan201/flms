@@ -78,6 +78,7 @@ class FixtureController extends Controller
       'session' => 'required',
       'date' => 'required',
       'venue_id' => 'required',
+      'status'=>'required',
     ]);
     if ($checkValidation->fails()) {
       notify()->error($checkValidation->getMessageBag());
@@ -86,10 +87,11 @@ class FixtureController extends Controller
     $updateFixture->update([
       'leagueId' => $request->league_id,
       'homeTeamId' => $request->home_team_id,
-      'awayTeamId' => $request->awaay_team_id,
+      'awayTeamId' => $request->away_team_id,
       'session' => $request->session,
       'date' => $request->date,
       'venue_id' => $request->venue_id,
+      'status'=> $request->status,
     ]);
     notify()->success('Create Successful');
     return redirect()->route('fixture.list');

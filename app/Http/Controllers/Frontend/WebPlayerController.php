@@ -29,6 +29,7 @@ class WebPlayerController extends Controller
             'playingRole' => $request->playing_role,
             'battingStyle' => $request->batting_style,
             'bowlingStyle' => $request->bowling_style,
+            'price'=> $request->price,
             'playerImage' => $request->photo,
         ]);
         notify()->success('Player Registration Successful');
@@ -148,6 +149,7 @@ class WebPlayerController extends Controller
             'playing_role' => 'required',
             'batting_style' => 'required',
             'bowling_style' => 'required',
+            'price' => 'required',
             'photo' => 'image',
         ]);
         if ($checkValidation->fails()) {
@@ -171,6 +173,7 @@ class WebPlayerController extends Controller
             'playingRole' => $request->playing_role,
             'battingStyle' => $request->batting_style,
             'bowlingStyle' => $request->bowling_style,
+            'price' => $request->price,
             'playerImage' => $playerPhotoPart
         ]);
         notify()->success("Update Successful.");

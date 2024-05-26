@@ -43,6 +43,11 @@
   </div>
 
   <div class="mb-3">
+    <label for="price" class="form-label">Player Price</label>
+    <input type="number" name="price" class="form-control" id="" placeholder="" value="{{$player->price}}">
+  </div>
+
+  <div class="mb-3">
     <label for="Photo" class="form-label">Photo</label>
     <img width="100" src="{{url('images/player',$player->playerImage)}}" alt="">
     <input type="file" name="photo" class="form-control" id="" placeholder="">

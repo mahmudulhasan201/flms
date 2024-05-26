@@ -62,6 +62,11 @@
                 </div>
 
                 <div class="mb-3">
+                    <label for="price" class="form-label">Asking Price</label>
+                    <input value="{{$player->price}}" type="number" name="price" class="form-control" id="" placeholder="">
+                </div>
+
+                <div class="mb-3">
                     <label for="Photo" class="form-label">Player Image</label>
                     <input value="" type="file" name="photo" class="form-control" id="" placeholder="">
                 </div>

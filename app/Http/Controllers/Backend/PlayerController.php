@@ -35,6 +35,7 @@ class PlayerController extends Controller
             'playing_role' => 'required',
             'batting_style' => 'required',
             'bowling_style' => 'required',
+            'price'=> 'required',
             'photo' => 'image',
         ]);
         if ($checkValidation->fails()) {
@@ -61,6 +62,7 @@ class PlayerController extends Controller
             'battingStyle' => $request->batting_style,
             'bowlingStyle' => $request->bowling_style,
             'playerImage' => $playerPhotoPart,
+            'price'=> $request->price,
         ]);
         notify()->success('create successful');
         return redirect()->route('player.form');
@@ -68,7 +70,6 @@ class PlayerController extends Controller
 
 
     //Edit
-
     public function playerEdit(Request $request, $pl_id)
     {
         $player = Player::find($pl_id);
@@ -87,6 +88,7 @@ class PlayerController extends Controller
             'playing_role' => 'required',
             'batting_style' => 'required',
             'bowling_style' => 'required',
+            'price'=> 'required',
             'photo' => 'image',
         ]);
         if ($checkValidation->fails()) {
@@ -108,6 +110,7 @@ class PlayerController extends Controller
             'playingRole' => $request->playing_role,
             'battingStyle' => $request->batting_style,
             'bowlingStyle' => $request->bowling_style,
+            'price'=> $request->price,
             'playerImage' => $playerPhotoPart
         ]);
         notify()->success("Update Successful.");
