@@ -14,7 +14,7 @@
                             <option value="">Select a league</option>
                             @foreach($leagues as $leagueOption)
                             <option value="{{ $leagueOption->id }}" {{ $selectedLeague == $leagueOption->id ? 'selected' : '' }}>
-                                {{ $leagueOption->leagueName }}
+                                {{ $leagueOption->leagueName }} {{ $leagueOption->season->seasonName }}
                             </option>
                             @endforeach
                         </select>
