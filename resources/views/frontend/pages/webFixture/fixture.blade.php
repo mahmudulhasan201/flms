@@ -13,8 +13,13 @@
                         <select name="league_id" id="league" class="form-control" style="background-color:white;" onchange="this.form.submit()">
                             <option style="font-size: 20px;" value="">Select a league</option>
                             @foreach($leagues as $leagueOption)
+<<<<<<< HEAD
                             <option style="font-size: 20px;" value="{{ $leagueOption->id }}" {{ $selectedLeague == $leagueOption->id ? 'selected' : '' }}>
                                 {{ $leagueOption->leagueName }}
+=======
+                            <option value="{{ $leagueOption->id }}" {{ $selectedLeague == $leagueOption->id ? 'selected' : '' }}>
+                                {{ $leagueOption->leagueName }} {{ $leagueOption->season->seasonName}}
+>>>>>>> 60ec891fa71f7e76529de4dd49b309af824281ee
                             </option>
                             @endforeach
                         </select>
