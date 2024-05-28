@@ -11,86 +11,91 @@ use Illuminate\Support\Facades\Validator;
 
 class PointTableController extends Controller
 {
-    public function pointTableList(){
-        $makePointTable= PointTable::with('league','team')->paginate(10);
+    public function pointTableList()
+    {
+        $makePointTable = PointTable::with('league', 'team')->paginate(10);
         // dd($makePointTable);
-        return view('backend.pages.pointTable.pointTableList',compact('makePointTable'));
+        return view('backend.pages.pointTable.pointTableList', compact('makePointTable'));
     }
 
-    public function pointTableForm(){
-        $leaguePointTable=League::all();
-        $teamPointTable=Team::all();
-        return view('backend.pages.pointTable.pointTableForm',compact('leaguePointTable','teamPointTable'));
+    public function pointTableForm()
+    {
+        $leaguePointTable = League::all();
+        $teamPointTable = Team::all();
+        return view('backend.pages.pointTable.pointTableForm', compact('leaguePointTable', 'teamPointTable'));
     }
 
-    public function submitPointTableform(Request $request){
+    public function submitPointTableform(Request $request)
+    {
 
-        $checkValidation=Validator::make($request->all(),[
-            'league_id'=>'required',
-           'team_id'=>'required',
-            'match'=>'required',
-            'win'=>'required',
-            'lose'=>'required',
-            'points'=>'required',
-            'status'=>'required',
-          ]);
-          if($checkValidation->fails()){
+        $checkValidation = Validator::make($request->all(), [
+            'league_id' => 'required',
+            'team_id' => 'required',
+            'match' => 'required',
+            'win' => 'required',
+            'lose' => 'required',
+            'points' => 'required',
+            'status' => 'required',
+        ]);
+        if ($checkValidation->fails()) {
             notify()->error($checkValidation->getMessageBag());
             return redirect()->back();
-          }
+        }
 
 
         PointTable::create([
-            'league_id'=>$request->league_id,
-            'team_id'=>$request->team_id,
-            'match'=>$request->match,
-            'win'=>$request->win,
-            'lose'=>$request->lose,
-            'points'=>$request->points,
-            'status'=>$request->status,
+            'league_id' => $request->league_id,
+            'team_id' => $request->team_id,
+            'match' => $request->match,
+            'win' => $request->win,
+            'lose' => $request->lose,
+            'points' => $request->points,
+            'status' => $request->status,
         ]);
-        notify()->success('Create Successful'); 
+        notify()->success('Create Successful');
         return redirect()->back();
     }
 
 
     //Edit
-    public function PointTableEdit($pt_id){
+    public function PointTableEdit($pt_id)
+    {
         $league = League::all();
         $team = Team::all();
         $editPointTable = PointTable::find($pt_id);
         // dd($editPointTable);
-        return view('backend.pages.pointTable.pointTableEdit',compact('editPointTable','league','team'));
+        return view('backend.pages.pointTable.pointTableEdit', compact('editPointTable', 'league', 'team'));
     }
 
-    public function PointTableUpdate(Request $request, $ptu_id){
+    public function PointTableUpdate(Request $request, $ptu_id)
+    {
 
-        $updatePointTable= PointTable::find($ptu_id);
+        $updatePointTable = PointTable::find($ptu_id);
 
-        $checkValidation=Validator::make($request->all(),[
+        $checkValidation = Validator::make($request->all(), [
 
-            'match'=>'required',
-            'win'=>'required',
-            'lose'=>'required',
-            'points'=>'required',
-            'status'=>'required',
-          ]);
-          if($checkValidation->fails()){
+            'match' => 'required',
+            'win' => 'required',
+            'lose' => 'required',
+            'points' => 'required',
+            'status' => 'required',
+        ]);
+        if ($checkValidation->fails()) {
             notify()->error($checkValidation->getMessageBag());
             return redirect()->back();
-          }
+        }
 
-          $lose = ($request->match - $request->win);
+        $lose = ($request->match - $request->win);
 
-          $updatePointTable->update([
+        $updatePointTable->update([
 
-            'match'=>$request->match,
-            'win'=>$request->win,
-            'lose'=>$lose,
-            'points'=>$request->win * 2,
-            'status'=>$request->status,
+            'match' => $request->match,
+            'win' => $request->win,
+            'lose' => $lose,
+            'points' => $request->win * 2,
+            'status' => $request->status,
         ]);
-        notify()->success('Create Successful'); 
+        notify()->success('Create Successful');
         return redirect()->route('pointTable.list');
     }
 
@@ -98,11 +103,12 @@ class PointTableController extends Controller
 
 
     //Delete
-    public function PointTableDelete($pt_id){
-        $deletePointTable=PointTable::find($pt_id);
+    public function PointTableDelete($pt_id)
+    {
+        $deletePointTable = PointTable::find($pt_id);
         $deletePointTable->delete();
-    
-        notify()->success('Delete successfully.'); 
+
+        notify()->success('Delete successfully.');
         return redirect()->back();
     }
 }

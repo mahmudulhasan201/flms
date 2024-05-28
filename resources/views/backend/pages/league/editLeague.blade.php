@@ -15,7 +15,7 @@
   <div class="form-group">
   <label for="">Season</label>
   <select class="form-control" name="season_id" >
-    <option value="">{{$editLeague->season->seasonName}}</option>
+    <option value="{{$editLeague->season_id}}">{{$editLeague->season->seasonName}}</option>
     @foreach($season as $data)
     <option value="{{$data->id}}">{{$data->seasonName}}</option>
     @endforeach

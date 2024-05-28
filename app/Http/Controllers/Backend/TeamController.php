@@ -24,7 +24,7 @@ class TeamController extends Controller
 
     public function submitTeamForm(Request $request)
     {
-        // dd($request->all());
+        dd($request->all());
         $checkValidation = Validator::make($request->all(), [
             'Name' => 'required',
             'teamlogo' => 'image',

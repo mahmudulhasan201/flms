@@ -5,11 +5,11 @@
 <div class="content-inner">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8" style="background-color: white;">
 
-                <h1>{{ $team->teamName }}</h1>
+                <h1 style="color: black;"><strong>{{ $team->teamName }}</strong></h1>
                 <div class="mt-3">
-                    <div class="team-details">
+                    <div class="team-details" style="color: black;">
                         <p><strong>Coach Name:</strong> {{ $team->coachName }}</p>
                         <p><strong>Owner Name:</strong> {{ $team->ownerName }}</p>
                         <p><strong>Owner Email:</strong> {{ $team->ownerEmail }}</p>
@@ -17,7 +17,7 @@
                         <p><strong>Status:</strong> {{ $team->status }}</p>
                     </div>
                     <a class="btn btn-primary mt-2" href="{{route('editTeam.profile',$team->id)}}">Edit</a>
-                </div>
+                </div><br>
             </div>
             <div class="col-md-4">
                 <div class="d-flex flex-column align-items-start">

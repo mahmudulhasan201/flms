@@ -7,40 +7,40 @@
     <div class="col-md-2">
     </div>
 
-    <div class="col-md-8" style="border:2px solid black; padding:10px; border-radius:15px;">
+    <div class="col-md-8" style="background-color:white; border:2px solid black; padding:10px; border-radius:15px; ">
 
-      <form action="{{route('do.registration')}}" method="post">
+      <form action="{{route('do.registration')}}" method="post" enctype="multipart/form-data">
         @csrf
-        <h2>Team Owner Registration Form</h2><br>
+        <h2 style="color: black;"><strong>Team Owner Registration Form</strong></h2><br>
 
-        <div class="form-group" style="color: white;">
-          <label for=""> Team Name</label>
-          <input type="text" name="team_name" class="form-control" id="" placeholder="">
+        <div class="form-group" >
+        <h5 style="color: black; font-size:20px ;" for="">Team Name</h5> 
+          <input style="border:1px solid black;" type="text" name="team_name" class="form-control" id="" placeholder="">
         </div>
 
-        <div class="form-group" style="color: white;">
-          <label for=""> Team Logo</label>
-          <input type="file" name="team_logo" class="form-control" id="" placeholder="">
+        <div class="form-group" style="color: black;">
+        <h5 style="color: black; font-size:20px ;" for="team_logo"> Team Logo</h5> 
+          <input style="border:1px solid black;" type="file" name="team_logo" class="form-control" id="team_logo" placeholder="">
         </div>
 
-        <div class="form-group" style="color: white;">
-          <label for="">Coach Name</label>
-          <input name="coach_name" type="text" class="form-control" id="" placeholder="">
+        <div class="form-group" style="color: black;">
+        <h5 style="color: black; font-size:20px ;" for="">Coach Name</h5> 
+          <input style="border:1px solid black;" name="coach_name" type="text" class="form-control" id="" placeholder="">
         </div>
 
-        <div class="form-group" style="color: white;">
-          <label for="">Owner Name</label>
-          <input name="owner_name" type="text" class="form-control" id="" placeholder="">
+        <div class="form-group" style="color: black;">
+        <h5 style="color: black; font-size:20px ;" for="">Owner Name</h5> 
+          <input style="border:1px solid black;" name="owner_name" type="text" class="form-control" id="" placeholder="">
         </div>
 
-        <div class="form-group" style="color: white;">
-          <label for="">Owner Email address</label>
-          <input name="owner_email" type="email" class="form-control" id="" placeholder="Enter email">
+        <div class="form-group" style="color: black;">
+        <h5 style="color: black; font-size:20px ;" for="">Owner Email address</h5> 
+          <input style="border:1px solid black;" name="owner_email" type="email" class="form-control" id="" placeholder="">
         </div>
 
-        <div class="form-group" style="color: white;">
-          <label for="">Password</label>
-          <input name="password" type="password" class="form-control" id="" placeholder="Enter Password">
+        <div class="form-group" style="color: black;">
+        <h5 style="color: black; font-size:20px ;" for="">Password</h5> 
+          <input style="border:1px solid black;" name="password" type="password" class="form-control" id="" placeholder="">
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
