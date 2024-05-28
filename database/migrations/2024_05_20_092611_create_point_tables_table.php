@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->integer('league_id');
             $table->integer('team_id');
-            $table->integer('match');
-            $table->integer('win');
-            $table->integer('lose');
-            $table->integer('points');
+            $table->integer('match')->default(0);
+            $table->integer('win')->default(0);
+            $table->integer('lose')->default(0);
+            $table->integer('points')->default(0);
             $table->string('status')->default('Active');
             $table->timestamps();
         });

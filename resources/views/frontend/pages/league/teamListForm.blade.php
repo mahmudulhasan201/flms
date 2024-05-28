@@ -9,12 +9,17 @@
 
                 <form method="GET" action="{{ route('view.teamList') }}">
                     <div class="form-group" style="color:white; font-size:40px;">
-                        <h1 for="league" ><strong>Select League</strong> </h1>
+                        <h1 for="league"><strong>Select League</strong> </h1>
                         <select name="league_id" id="league" class="form-control" style="background-color:white;" onchange="this.form.submit()">
                             <option style="font-size: 20px;" value="">Select a league</option>
                             @foreach($leagues as $leagueOption)
+<<<<<<< HEAD
                             <option style="font-size: 20px;" value="{{ $leagueOption->id }}" {{ $selectedLeague == $leagueOption->id ? 'selected' : '' }}>
                                 {{ $leagueOption->leagueName }}
+=======
+                            <option value="{{ $leagueOption->id }}" {{ $selectedLeague == $leagueOption->id ? 'selected' : '' }}>
+                                {{ $leagueOption->leagueName }} {{ $leagueOption->season->seasonName }}
+>>>>>>> 0b6747748eca0a186930b700728df8492e98781c
                             </option>
                             @endforeach
                         </select>

@@ -45,15 +45,20 @@ class FixtureController extends Controller
     }
 
 
-    Fixture::create([
+    $fixture = Fixture::create([
       'leagueId' => $request->league_id,
       'homeTeamId' => $request->home_team_id,
       'awayTeamId' => $request->away_team_id,
       'session' => $request->session,
       'date' => $request->date,
       'venue_id' => $request->venue_id,
+      'home_team_score' => $request->home_team_score,
+      'away_team_score' => $request->away_team_score,
     ]);
-    notify()->success('Create Successful');
+
+    $fixture->updatePointTable();
+
+    notify()->success('Fixture created and point table updated successfully.');
     return redirect()->back();
   }
 
@@ -79,6 +84,8 @@ class FixtureController extends Controller
       'date' => 'required',
       'venue_id' => 'required',
       'status' => 'required',
+      'home_team_score' => 'integer',
+      'away_team_score' => 'integer',
     ]);
     if ($checkValidation->fails()) {
       notify()->error($checkValidation->getMessageBag());
@@ -92,10 +99,17 @@ class FixtureController extends Controller
       'date' => $request->date,
       'venue_id' => $request->venue_id,
       'status' => $request->status,
+      'home_team_score' => $request->home_team_score,
+      'away_team_score' => $request->away_team_score,
     ]);
-    notify()->success('Create Successful');
+
+    $updateFixture->updatePointTable();
+
+
+    notify()->success('Fixture updated and point table updated successfully.');
     return redirect()->route('fixture.list');
   }
+
 
   //View
   public function fixtureView($view_id)

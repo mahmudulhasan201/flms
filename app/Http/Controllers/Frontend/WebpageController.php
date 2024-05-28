@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Fixture;
 use App\Models\League;
 use App\Models\Player;
+use App\Models\PointTable;
 use App\Models\Team;
 use App\Models\TeamLeague;
 use App\Models\TeamPlayer;
@@ -66,7 +67,10 @@ class WebpageController extends Controller
             return redirect()->route('homepage');
         }
 
-        if (auth('teamGuard')->user()->status == 'Approved') {
+        $diffLeagueTeam = TeamLeague::where('team_id', auth('teamGuard')->user()->id)
+            ->exists();
+
+        if ($diffLeagueTeam) {
             notify()->error('This team is already in a different league');
             return redirect()->route('homepage');
         }
@@ -80,6 +84,11 @@ class WebpageController extends Controller
 
         $varTeam = TeamLeague::with(['league', 'team'])->get();
         //insert into team_league
+        PointTable::create([
+            'league_id' => $varTeamLeague->id,
+            'team_id' => auth('teamGuard')->user()->id,
+        ]);
+
         return view('frontend.pages.joinLeague', compact('varTeam'));
     }
 
@@ -101,7 +110,7 @@ class WebpageController extends Controller
     }
 
     public function doRegistration(Request $request)
-    { 
+    {
         // dd($request->all());
 
         $checkValidation = Validator::make($request->all(), [
@@ -125,7 +134,7 @@ class WebpageController extends Controller
 
         Team::create([
             'teamName' => $request->team_name,
-            'teamLogo' => $request->team_logo,
+            'teamLogo' => $fileName,
             'coachName' => $request->coach_name,
             'ownerName' => $request->owner_name,
             'ownerEmail' => $request->owner_email,
