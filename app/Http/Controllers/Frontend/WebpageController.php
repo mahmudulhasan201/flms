@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Fixture;
 use App\Models\League;
 use App\Models\Player;
+use App\Models\PointTable;
 use App\Models\Team;
 use App\Models\TeamLeague;
 use App\Models\TeamPlayer;
@@ -80,6 +81,11 @@ class WebpageController extends Controller
 
         $varTeam = TeamLeague::with(['league', 'team'])->get();
         //insert into team_league
+        PointTable::create([
+            'league_id' => $varTeamLeague->id,
+            'team_id' => auth('teamGuard')->user()->id,
+        ]);
+
         return view('frontend.pages.joinLeague', compact('varTeam'));
     }
 
