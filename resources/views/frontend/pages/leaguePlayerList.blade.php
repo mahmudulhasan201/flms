@@ -8,11 +8,11 @@
 
 
 
-    <div style="margin-left: 50px; margin-right:50px;">
-    <h1>Player List</h1>
-        <table class="table table-striped table-dark">
+    <div style="margin-right:50px; ">
+    <h1><strong> Player List</strong></h1>
+        <table class="table table-striped table-dark" style="background-color: white;">
             <thead>
-                <tr style="color: white; font-size: 20px; ">
+                <tr style="color: black; font-size: 20px; ">
                     <th scope="col">ID</th>
                     <th scope="col">Player Name</th>
                     <th scope="col">Email</th>
@@ -27,11 +27,11 @@
                     <th scope="col">Action</th>
                 </tr>
             </thead>
-            <tbody style="color: white;">
+            <tbody style="color: black;  font-size: 17px;">
                 <tr>
-                    @foreach($data as $player)
+                    @foreach($data as $key=> $player)
 
-                    <td>{{$player->id}}</td>
+                    <td>{{$key + 1}}</td>
                     <td>{{$player->fullName}}</td>
                     <td>{{$player->email}}</td>
                     <td>{{$player->born}}</td>

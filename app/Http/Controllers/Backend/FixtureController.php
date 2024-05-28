@@ -78,7 +78,7 @@ class FixtureController extends Controller
       'session' => 'required',
       'date' => 'required',
       'venue_id' => 'required',
-      'status'=>'required',
+      'status' => 'required',
     ]);
     if ($checkValidation->fails()) {
       notify()->error($checkValidation->getMessageBag());
@@ -91,7 +91,7 @@ class FixtureController extends Controller
       'session' => $request->session,
       'date' => $request->date,
       'venue_id' => $request->venue_id,
-      'status'=> $request->status,
+      'status' => $request->status,
     ]);
     notify()->success('Create Successful');
     return redirect()->route('fixture.list');

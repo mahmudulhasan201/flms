@@ -3,8 +3,8 @@
 @section('content')
 <div style="padding-bottom:20px">
     <div class="content-inner">
-        <h1 class="text-center">League</h1><br>
-        <div class="container">
+        <h1 class="text-center"><strong>League</strong></h1><br>
+        <div class="container" style="background-color: white; padding-top:100px ;padding-left:100px">
             @foreach($data as $league)
 
             <div class="card mb-3">
@@ -14,8 +14,8 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card-body">
-                            <h3 class="card-title">{{$league->leagueName}}</h3>
-                            <p class="card-text">{{$league->season->seasonName}}</p>
+                            <h3 class="card-title" style="color: black;"><strong>{{$league->leagueName}}</strong></h3>
+                            <p class="card-text" style="color: black; font-size: 20px">{{$league->season->seasonName}}</p>
                         </div>
                     </div>
                     <div class="col-md-4">

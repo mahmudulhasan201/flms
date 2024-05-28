@@ -12,7 +12,7 @@ use App\Models\TeamLeague;
 use App\Models\TeamPlayer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
 
 class WebpageController extends Controller
 {   //Frontend Homepage
@@ -107,7 +107,28 @@ class WebpageController extends Controller
     }
 
     public function doRegistration(Request $request)
-    {
+    { 
+        // dd($request->all());
+
+        $checkValidation = Validator::make($request->all(), [
+            'team_name' => 'required',
+            'team_logo' => 'image',
+            'coach_name' => 'required',
+            'owner_name' => 'required',
+            'owner_email' => 'required',
+            'password' => 'required',
+        ]);
+        if ($checkValidation->fails()) {
+            notify()->error($checkValidation->getMessageBag());
+            return redirect()->back();
+        }
+        $fileName = '';
+        if ($request->hasFile('team_logo')) {
+            $fileName = date('YmdHis') . '.' . $request->file('team_logo')->getClientOriginalExtension();
+            $request->file('team_logo')->storeAs('/team', $fileName);
+        }
+
+
         Team::create([
             'teamName' => $request->team_name,
             'teamLogo' => $request->team_logo,

@@ -8,13 +8,18 @@
             <div class="content-inner">
 
                 <form method="GET" action="{{ route('web.fixture') }}">
-                    <div class="form-group">
-                        <label for="league">Select League</label>
-                        <select name="league_id" id="league" class="form-control" style="background-color:dimgrey; color: #000;" onchange="this.form.submit()">
-                            <option value="">Select a league</option>
+                    <div class="form-group" style="color:white; font-size:40px;">
+                        <h1 for="league"><strong>Select League</strong></h1>
+                        <select name="league_id" id="league" class="form-control" style="background-color:white;" onchange="this.form.submit()">
+                            <option style="font-size: 20px;" value="">Select a league</option>
                             @foreach($leagues as $leagueOption)
+<<<<<<< HEAD
+                            <option style="font-size: 20px;" value="{{ $leagueOption->id }}" {{ $selectedLeague == $leagueOption->id ? 'selected' : '' }}>
+                                {{ $leagueOption->leagueName }}
+=======
                             <option value="{{ $leagueOption->id }}" {{ $selectedLeague == $leagueOption->id ? 'selected' : '' }}>
                                 {{ $leagueOption->leagueName }} {{ $leagueOption->season->seasonName}}
+>>>>>>> 60ec891fa71f7e76529de4dd49b309af824281ee
                             </option>
                             @endforeach
                         </select>
@@ -23,10 +28,10 @@
 
                 @if($league)
                 <!-- Display teams if a league is selected -->
-                <h1>{{ $league->leagueName }}</h1>
-                <table class="table table-bordered">
+                <h1><strong>{{ $league->leagueName }} </strong></h1>
+                <table class="table table-bordered" style="background-color: white;">
                     <thead>
-                        <tr>
+                        <tr style="color: black; font-size: 20px">
                             <th scope="col">Serial</th>
                             <th scope="col">date</th>
                             <th scope="col">Home Team</th>
@@ -38,7 +43,7 @@
 
                     <tbody>
                         @foreach($matches as $key => $match)
-                        <tr>
+                        <tr style="color: black; font-size: 20px">
                             <td>{{ $key + 1 }}</td>
                             <td>{{$match->date}}</td>
                             <td>{{$match->homeTeam->teamName}}</td>

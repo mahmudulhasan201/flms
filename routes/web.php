@@ -86,16 +86,14 @@ Route::group(['prefix' => 'admin'], function () {
     // CLMS login&Logout
     Route::get('/login', [UserController::class, 'login'])->name('login');
     Route::post('/do-login', [UserController::class, 'doLogin'])->name('do.login');
-    Route::group(['middleware' => 'auth'], function () {
-
-        Route::get('/logout', [UserController::class, 'logout'])->name('logout');
-        Route::get('/admin', [HomeController::class, 'admin']);
+    Route::group(['middleware' => 'auth'], function ()
+   {
+     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+     Route::get('/admin', [HomeController::class, 'admin']);
 
 
         //Dashboard
         Route::get('/', [HomeController::class, 'user'])->name('dashboard');
-
-
 
         //League
         Route::get('/league/list', [LeagueController::class, 'leagueList'])->name('league.list');
@@ -186,8 +184,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/point-table/delete/{point_id}', [PointTableController::class, 'PointTableDelete'])->name('pointTable.delete');
 
         //Category
-        Route::get('/category/list', [CategoryController::class, 'list'])->name('category.list');
-        Route::get('/category/form', [CategoryController::class, 'form'])->name('category.form');
-        Route::post('/category/form', [CategoryController::class, 'submitForm'])->name('category.form');
+        // Route::get('/category/list', [CategoryController::class, 'list'])->name('category.list');
+        // Route::get('/category/form', [CategoryController::class, 'form'])->name('category.form');
+        // Route::post('/category/form', [CategoryController::class, 'submitForm'])->name('category.form');
     });
 });

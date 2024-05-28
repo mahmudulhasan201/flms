@@ -4,8 +4,9 @@
 
 <div class="content-inner">
     <div class="container">
+        <h1><strong>Invitation</strong></h1>
         @if($invitations)
-        <table class="table table-bordered" style="background-color:cadetblue;">
+        <table class="table table-bordered" style="background-color:white;">
             <thead>
                 <tr style="color: black; font-size: 25px; ">
                     <th scope="col">Serial</th>
@@ -18,7 +19,7 @@
 
             <tbody>
                 @foreach($invitations as $key=>$reqs)
-                <tr style="color: white;  font-size: px;">
+                <tr style="color: black;  font-size: 20px;">
 
                     <td>{{$key+1}}</td>
                     <td>{{$reqs->team->teamName}}</td>
