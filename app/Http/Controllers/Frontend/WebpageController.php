@@ -67,7 +67,10 @@ class WebpageController extends Controller
             return redirect()->route('homepage');
         }
 
-        if (auth('teamGuard')->user()->status == 'Approved') {
+        $diffLeagueTeam = TeamLeague::where('team_id', auth('teamGuard')->user()->id)
+            ->exists();
+
+        if ($diffLeagueTeam) {
             notify()->error('This team is already in a different league');
             return redirect()->route('homepage');
         }
@@ -107,7 +110,7 @@ class WebpageController extends Controller
     }
 
     public function doRegistration(Request $request)
-    { 
+    {
         // dd($request->all());
 
         $checkValidation = Validator::make($request->all(), [
@@ -131,7 +134,7 @@ class WebpageController extends Controller
 
         Team::create([
             'teamName' => $request->team_name,
-            'teamLogo' => $request->team_logo,
+            'teamLogo' => $fileName,
             'coachName' => $request->coach_name,
             'ownerName' => $request->owner_name,
             'ownerEmail' => $request->owner_email,

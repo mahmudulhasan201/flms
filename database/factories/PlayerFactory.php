@@ -27,6 +27,7 @@ class PlayerFactory extends Factory
             'battingStyle' => fake()->randomElement(['RightHanded', 'LeftHanded']),
             'bowlingStyle' => fake()->randomElement(['RightHanded', 'LeftHanded']),
             'playerImage' => fake()->imageUrl(),
+            'price' => '500',
         ];
     }
 }

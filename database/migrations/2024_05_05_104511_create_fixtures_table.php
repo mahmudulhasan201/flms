@@ -16,9 +16,11 @@ return new class extends Migration
             $table->string('session');
             $table->date('date');
             $table->string('venue_id');
+            $table->integer('home_team_score')->nullable();
+            $table->integer('away_team_score')->nullable();
             $table->string('status')->default('Active');
-            $table->timestamps();  
-        }); 
+            $table->timestamps();
+        });
     }
 
 

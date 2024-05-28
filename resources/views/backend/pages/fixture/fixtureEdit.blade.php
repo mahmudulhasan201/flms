@@ -66,6 +66,17 @@
         </select>
       </div>
 
+      <div>
+        <label for="home_score">{{$editFixture->homeTeam->teamName}} Score</label>
+        <input class="form-control" type="number" id="home_score" name="home_team_score" placeholder="Add Number" value="{{$editFixture->home_team_score}}">
+      </div>
+      <div>
+        <label for="away_score">{{$editFixture->awayTeam->teamName}} Score</label>
+        <input class="form-control" type="number" name="away_team_score" placeholder="Add Number" value="{{$editFixture->away_team_score}}">
+      </div>
+
+
+
       <div class="mb-3">
         <label for="status" class="form-label">Status</label>
         <select class="form-control" name="status" id="">
